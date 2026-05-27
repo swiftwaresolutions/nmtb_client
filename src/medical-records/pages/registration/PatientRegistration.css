@@ -1,0 +1,225 @@
+/* Compact Patient Registration Page - Fit on One Page */
+
+.patient-registration-compact {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+}
+
+/* Remove all card margins and padding to maximize space */
+.patient-registration-compact .card {
+  border-radius: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+.patient-registration-compact .card-body {
+  padding: 0.75rem !important;
+}
+
+/* Compact form controls */
+.patient-registration-compact .form-control,
+.patient-registration-compact .form-select,
+.patient-registration-compact .searchable-select-input {
+  font-size: var(--font-size-md);
+  padding: 0.25rem 0.5rem;
+  height: calc(1.5em + 0.5rem + 2px);
+  border: var(--border-width-thin) solid var(--border-color-input);
+  border-radius: var(--border-radius-sm);
+}
+
+/* Focus styling for all input boxes */
+.patient-registration-compact .form-control:focus,
+.patient-registration-compact .form-select:focus,
+.patient-registration-compact .searchable-select-input:focus {
+  border-color: var(--border-color-input-focus);
+  border-width: var(--border-width);
+  box-shadow: 0 0 0 0.2rem rgba(17, 153, 142, 0.25);
+  outline: none;
+}
+
+/* Ensure consistent label heights for alignment */
+.patient-registration-compact .form-label {
+  font-size: var(--font-size-xs);
+  margin-bottom: 0.15rem;
+  font-weight: var(--font-weight-medium);
+  color: #495057;
+  min-height: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Compact radio buttons */
+.patient-registration-compact .form-check {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+.patient-registration-compact .form-check-input {
+  margin-top: 0.15rem;
+}
+
+.patient-registration-compact .form-check-label {
+  font-size: var(--font-size-md);
+}
+
+/* Compact buttons */
+.patient-registration-compact .btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: var(--font-size-md);
+}
+
+/* Reduce row gaps */
+.patient-registration-compact .g-2 {
+  --bs-gutter-y: 0.5rem;
+  --bs-gutter-x: 0.5rem;
+}
+
+/* Remove margin top from rows */
+.patient-registration-compact .mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Success button styling */
+.patient-registration-compact .btn-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border: none;
+}
+
+.patient-registration-compact .btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.patient-registration-compact .btn-secondary {
+  background: linear-gradient(135deg, #868f96 0%, #596164 100%);
+  border: none;
+}
+
+/* Card shadow */
+.patient-registration-compact .shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+
+
+/* Text danger for required fields */
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Container fluid adjustments */
+.patient-registration-compact .container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Ensure no overflow */
+body {
+  overflow-x: hidden;
+}
+
+/* Material Design Overrides for Patient Registration - Compact & Integrated Labels */
+
+/* The Container (Form Group) becomes the input box */
+.patient-registration-modern .position-relative {
+    background-color: beige !important;
+    border-bottom: 1px solid #888;
+    border-radius: 4px 4px 0 0;
+    height: 48px; /* Sufficient for label + input */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: background-color 0.2s;
+    margin-bottom: 0 !important; /* Override default margin */
+}
+
+/* Focus state for the container */
+.patient-registration-modern .position-relative:focus-within {
+    background-color: #ffffff;
+    border-bottom: 2px solid var(--border-color-input-focus);
+}
+
+/* Input Fields - Transparent and positioned at bottom */
+.patient-registration-modern .position-relative .form-control,
+.patient-registration-modern .position-relative .form-select,
+.patient-registration-modern .position-relative .searchable-select-input,
+.patient-registration-modern .position-relative .input-group-text,
+.patient-registration-modern .position-relative input.form-control,
+.patient-registration-modern .position-relative select.form-select,
+.patient-registration-modern .position-relative .form-control-sm,
+.patient-registration-modern .position-relative .form-select-sm {
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 8px 4px 8px !important; /* Bottom padding */
+    font-size: var(--font-size-base) !important;
+    /* background-color: transparent !important; */
+    background-color: beige !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    width: 100%;
+}
+
+/* Remove focus styles from inputs since container handles it */
+.patient-registration-modern .position-relative .form-control:focus,
+.patient-registration-modern .position-relative .form-select:focus,
+.patient-registration-modern .position-relative .searchable-select-input:focus {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Labels - Fixed at top inside container */
+.patient-registration-modern .floating-label,
+.patient-registration-modern .floating-label-select {
+    position: absolute;
+    top: 5px !important;
+    left: 8px !important;
+    font-size: var(--font-size-base) !important;
+  color: var(--text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+    pointer-events: none;
+    transform: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    z-index: 5;
+    letter-spacing: 0.3px;
+}
+
+/* Active/Focused Label State - Color change only */
+.patient-registration-modern .position-relative:focus-within .floating-label,
+.patient-registration-modern .position-relative:focus-within .floating-label-select,
+.patient-registration-modern .form-control:not(:placeholder-shown) ~ .floating-label,
+.patient-registration-modern .form-select:not([value=""]) ~ .floating-label-select {
+  color: var(--text-primary) !important;
+}
+
+/* Adjust buttons to match height */
+.patient-registration-modern .btn-sm {
+    padding: 0px 10px !important;
+    height: 28px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Visit Type Buttons */
+.patient-registration-modern .visit-type-btn {
+    height: 28px !important;
+    padding: 0px 10px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Visit Type Button Active State - Use Theme Colors */
+.btn-check:checked + .visit-type-btn.active {
+    background-color: var(--page-secondary-color) !important;
+    color: var(--page-primary-color) !important;
+    border-color: var(--page-secondary-color) !important;
+}
+
+/* Increase row spacing */
+.patient-registration-modern .g-2 {
+    --bs-gutter-y: 1.25rem !important; /* Increased from default */
+}
+

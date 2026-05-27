@@ -1,0 +1,514 @@
+@import "./theme.css";
+
+/* ==========================================
+   COMMON STYLES FOR HIMS APPLICATION
+   ========================================== */
+
+/* Override Bootstrap Card Border Radius */
+.card {
+  border-radius: 0 !important;
+}
+
+.card-header {
+  border-radius: 0 !important;
+}
+
+/* Module Card Styles */
+.module-card {
+  height: 120px;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  background: var(--gradient-card);
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--card-shadow-hover);
+  background: var(--gradient-card-hover);
+}
+
+.module-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.module-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.module-card-icon {
+  font-size: 3rem;
+  color: var(--page-primary-color);
+  transition: all var(--transition-normal);
+}
+
+.module-card:hover .module-card-icon {
+  transform: scale(1.1);
+  color: var(--page-primary-color);
+}
+
+.module-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Selection Area Container */
+.selection-area-container {
+  padding: 2rem 1rem;
+  background-color: var(--bg-main);
+  min-height: 100vh;
+}
+
+.selection-area-content {
+  padding: 1rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 249, 250, 0.9) 100%
+  );
+  backdrop-filter: blur(10px);
+  border-radius: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.selection-area-title {
+  font-size: 1.9rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--page-primary-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--page-primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #6c757d;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  color: #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.empty-state-message {
+  font-size: var(--font-size-xl);
+  color: #6c757d;
+}
+
+/* Responsive Grid */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .module-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .module-card {
+    height: 100px;
+  }
+
+  .module-card-title {
+    font-size: 0.95rem;
+  }
+
+  .module-card-icon {
+    font-size: 2.5rem;
+  }
+
+  .selection-area-container {
+    padding: 1rem 0.5rem;
+  }
+
+  /* Mobile responsive layout */
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .module-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .module-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered Animation for Cards */
+.module-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.module-card:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.module-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.module-card:nth-child(4) {
+  animation-delay: 0.25s;
+}
+.module-card:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.module-card:nth-child(6) {
+  animation-delay: 0.35s;
+}
+.module-card:nth-child(7) {
+  animation-delay: 0.4s;
+}
+.module-card:nth-child(8) {
+  animation-delay: 0.45s;
+}
+.module-card:nth-child(9) {
+  animation-delay: 0.5s;
+}
+.module-card:nth-child(10) {
+  animation-delay: 0.55s;
+}
+.module-card:nth-child(11) {
+  animation-delay: 0.6s;
+}
+.module-card:nth-child(12) {
+  animation-delay: 0.65s;
+}
+
+/* Utility Classes */
+.text-teal {
+  color: teal;
+}
+
+.bg-teal {
+  background-color: teal;
+}
+
+.border-teal {
+  border-color: teal;
+}
+
+/* Welcome Message */
+.welcome-message {
+  background: linear-gradient(135deg, teal 0%, #006666 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 102, 102, 0.2);
+}
+
+.welcome-message h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.welcome-message p {
+  margin: 0.5rem 0 0 0;
+  font-size: var(--font-size-base);
+  opacity: 0.9;
+}
+
+/* Card Badge (for notifications, status, etc.) */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Modern Glassmorphic Date Picker UI */
+.datebox-label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.datebox-wrapper {
+  position: relative;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color-input);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.datebox-wrapper:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.datebox-icon {
+  margin-right: 12px;
+  font-size: var(--font-size-base);
+  color: var(--primary-color);
+}
+
+.datebox-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.datebox-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(45%) sepia(90%) saturate(350%) hue-rotate(180deg);
+}
+
+/* Module Card Variants */
+.module-card.registration {
+  border-left: 4px solid #28a745;
+}
+.module-card.billing {
+  border-left: 4px solid #ffc107;
+}
+.module-card.laboratory {
+  border-left: 4px solid #17a2b8;
+}
+.module-card.nursing {
+  border-left: 4px solid #e83e8c;
+}
+.module-card.pharmacy {
+  border-left: 4px solid #6610f2;
+}
+.module-card.store {
+  border-left: 4px solid #fd7e14;
+}
+.module-card.accounts {
+  border-left: 4px solid #20c997;
+}
+.module-card.employee {
+  border-left: 4px solid #dc3545;
+}
+.module-card.payroll {
+  border-left: 4px solid var(--page-primary-color);
+}
+.module-card.admin {
+  border-left: 4px solid #6c757d;
+}
+.module-card.radiology {
+  border-left: 4px solid #6f42c1;
+}
+
+/* Main Content Layout Styles */
+.main-content {
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-normal);
+  min-height: calc(100vh - var(--header-height));
+  background-color: var(--page-body-bg);
+}
+
+.main-content.collapsed {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+/* Maternity modal specific styles */
+.maternity-modal-body {
+  padding: 8px 12px;
+}
+
+.maternity-section-title {
+  margin-bottom: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.bio-row {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.bio-row-start {
+  align-items: flex-start;
+}
+
+.bio-row-right {
+  align-items: center;
+}
+
+.bio-label {
+  width: 35%;
+  color: #ff33cc;
+  font-weight: var(--font-weight-bold);
+}
+
+.bio-value {
+  width: 65%;
+  color: #009900;
+}
+
+.bio-input {
+  border-color: #ff33cc;
+}
+
+.dos-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dos-help {
+  color: #666;
+  font-size: var(--font-size-md);
+}
+
+.dos-date {
+  width: 40%;
+}
+
+/* Examination rows styling */
+.exam-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.exam-label {
+  width: 28%;
+  color: #009900;
+  font-weight: var(--font-weight-bold);
+}
+
+.exam-colon {
+  width: 2%;
+  color: #2e2e2e;
+}
+
+.exam-control {
+  width: 55%;
+}
+
+.exam-unit {
+  width: 15%;
+  color: #006600;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Pink input style for examination fields */
+.exam-control .form-control,
+.exam-control .form-select,
+.exam-control textarea {
+  border: 2px solid #ff33cc !important;
+  border-radius: 6px !important;
+  padding: 6px 8px !important;
+}
+
+.pv-composite {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pv-composite .form-control,
+.pv-composite .form-select {
+  border: 2px solid #ff33cc !important;
+  border-radius: 6px !important;
+}

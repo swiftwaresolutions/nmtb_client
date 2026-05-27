@@ -1,0 +1,87 @@
+/* =================================================================
+   QUICK REFERENCE: How to Change Application Colors
+   ================================================================= */
+
+/*
+  🎯 STEP 1: Open this file
+  📁 Location: src/style/theme.css
+  
+  🎯 STEP 2: Change the PRIMARY COLORS section below
+  
+  🎯 STEP 3: Save - All components update automatically!
+*/
+
+/* =================================================================
+   ⚡ CHANGE THESE TO UPDATE ENTIRE APPLICATION
+   ================================================================= */
+
+:root {
+  /* 🎨 MAIN BRAND COLOR - Changes Header, Sidebar, Buttons, Icons */
+  --primary-color: #006666;        /* ← CHANGE THIS COLOR */
+  
+  /* 🎨 SUPPORTING COLORS - Auto-calculated based on primary */
+  --primary-dark: #004d4d;         /* Darker shade for gradients */
+  --primary-light: teal;           /* Lighter shade for hover effects */
+  --primary-accent: #20c997;       /* Bright accent for text gradients */
+  
+  /* 🎨 LOGOUT BUTTON COLOR */
+  --secondary-color: #f0ad4e;      /* Warning/Logout button */
+}
+
+/* =================================================================
+   💡 EXAMPLE COLOR SCHEMES (Copy & Paste)
+   ================================================================= */
+
+/* BLUE THEME
+:root {
+  --primary-color: #0066cc;
+  --primary-dark: #0052a3;
+  --primary-light: #3399ff;
+  --primary-accent: #66ccff;
+  --secondary-color: #f0ad4e;
+}
+*/
+
+/* PURPLE THEME
+:root {
+  --primary-color: #6B46C1;
+  --primary-dark: #553C9A;
+  --primary-light: #9F7AEA;
+  --primary-accent: #D6BCFA;
+  --secondary-color: #f0ad4e;
+}
+*/
+
+/* GREEN THEME
+:root {
+  --primary-color: #059669;
+  --primary-dark: #047857;
+  --primary-light: #10B981;
+  --primary-accent: #6EE7B7;
+  --secondary-color: #f0ad4e;
+}
+*/
+
+/* RED THEME
+:root {
+  --primary-color: #DC2626;
+  --primary-dark: #B91C1C;
+  --primary-light: #EF4444;
+  --primary-accent: #FCA5A5;
+  --secondary-color: #f0ad4e;
+}
+*/
+
+/* =================================================================
+   ✅ WHAT GETS UPDATED AUTOMATICALLY:
+   
+   ✓ Header background and buttons
+   ✓ Sidebar background and menu colors
+   ✓ Module card icons and hover effects
+   ✓ Button gradients and hover states
+   ✓ Active menu highlights
+   ✓ Text gradients on titles
+   ✓ All future modules
+   
+   📖 Full Documentation: THEME_SYSTEM_README.md
+   ================================================================= */

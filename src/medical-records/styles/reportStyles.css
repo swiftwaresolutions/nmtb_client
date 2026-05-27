@@ -1,0 +1,253 @@
+/* ===================================================================
+   HIMS Global Report Styles
+   Medical Records Module - Standardized Report Design
+   =================================================================== */
+
+:root {
+    --hims-bg: #f8f9fc;
+    --hims-card-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    --hims-primary: #4e73df;
+    --hims-text-dark: #5a5c69;
+    --hims-border: #e3e6f0;
+    --hims-info: #36b9cc;
+    --hims-danger: #e74a3b;
+    --hims-success: #1cc88a;
+    --hims-warning: #f6c23e;
+}
+
+/* Report Card Container */
+.report-card {
+    background-color: #fff;
+    border: 1px solid var(--hims-border);
+    border-radius: 0.35rem;
+    box-shadow: var(--hims-card-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.report-card-header {
+    padding: 0.75rem 1.25rem;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid var(--hims-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* KPI Cards - Border Left Variants */
+.kpi-border-left { 
+    border-left: 0.25rem solid var(--hims-primary) !important; 
+}
+
+.border-info-left { 
+    border-left: 0.25rem solid var(--hims-info) !important; 
+}
+
+.border-danger-left { 
+    border-left: 0.25rem solid var(--hims-danger) !important; 
+}
+
+.border-success-left { 
+    border-left: 0.25rem solid var(--hims-success) !important; 
+}
+
+.border-warning-left { 
+    border-left: 0.25rem solid var(--hims-warning) !important; 
+}
+
+/* HIMS Table Styling */
+.table-hims thead th {
+    background-color: #f8f9fc;
+    color: #4e73df;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid var(--hims-border);
+    user-select: none;
+}
+
+.table-hims thead th:hover {
+    background-color: #eaecf4;
+}
+
+.table-hims td { 
+    vertical-align: middle; 
+    font-size: var(--font-size-md); 
+    border-bottom: 1px solid var(--hims-border); 
+}
+
+.table-hims tbody tr:hover {
+    background-color: #f8f9fc;
+    cursor: pointer;
+}
+
+/* Header Integrated Search (Right to Left Animation) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    width: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+    border: 1px solid var(--hims-border);
+    border-radius: 20px;
+    padding: 3px 0;
+    outline: none;
+    font-size: var(--font-size-sm);
+    position: absolute;
+    right: 35px;
+}
+
+.search-input.active {
+    width: 200px;
+    opacity: 1;
+    padding: 3px 12px;
+}
+
+.search-input:focus {
+    border-color: var(--hims-primary);
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+/* Action Icons */
+.action-icon {
+    cursor: pointer;
+    padding: 5px;
+    color: #3b3b3b;
+    transition: color 0.2s;
+    font-size: var(--font-size-lg);
+}
+
+.action-icon:hover { 
+    color: var(--hims-primary); 
+}
+
+.action-icon.text-success:hover {
+    color: var(--hims-success) !important;
+}
+
+/* KPI Text Sizes */
+.text-xs {
+    font-size: var(--font-size-xs) !important;
+}
+
+/* Badge Variants */
+.badge.bg-info-subtle {
+    background-color: rgba(54, 185, 204, 0.1) !important;
+}
+
+.badge.bg-danger-subtle {
+    background-color: rgba(231, 74, 59, 0.1) !important;
+}
+
+.badge.bg-success-subtle {
+    background-color: rgba(28, 200, 138, 0.1) !important;
+}
+
+.badge.bg-warning-subtle {
+    background-color: rgba(246, 194, 62, 0.1) !important;
+}
+
+.badge.border-info-subtle {
+    border-color: rgba(54, 185, 204, 0.3) !important;
+}
+
+.badge.border-danger-subtle {
+    border-color: rgba(231, 74, 59, 0.3) !important;
+}
+
+.badge.border-success-subtle {
+    border-color: rgba(28, 200, 138, 0.3) !important;
+}
+
+.badge.border-warning-subtle {
+    border-color: rgba(246, 194, 62, 0.3) !important;
+}
+
+/* Print Styles */
+@media print {
+    .no-print { 
+        display: none !important; 
+    }
+    
+    .report-card { 
+        box-shadow: none; 
+        border: 1px solid #000; 
+        page-break-inside: avoid;
+    }
+    
+    .table-hims thead th {
+        background-color: #f0f0f0 !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    body {
+        background-color: #fff !important;
+    }
+    
+    @page {
+        margin: 1cm;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .report-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .search-input.active {
+        width: 150px;
+    }
+}
+
+/* Loading Overlay */
+.report-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Empty State */
+.report-empty-state {
+    padding: 3rem;
+    text-align: center;
+    color: var(--hims-text-dark);
+}
+
+.report-empty-state i {
+    font-size: 4rem;
+    color: var(--hims-border);
+    margin-bottom: 1rem;
+}
+
+/* Sort Indicator */
+.sort-indicator {
+    font-size: var(--font-size-sm);
+    margin-left: 0.3rem;
+    opacity: 0.5;
+}
+
+.sort-indicator.active {
+    opacity: 1;
+    color: var(--hims-primary);
+}

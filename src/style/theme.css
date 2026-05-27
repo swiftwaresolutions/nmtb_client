@@ -1,0 +1,305 @@
+/* ==========================================
+   HIMS APPLICATION - THEME VARIABLES
+   Change colors here to update the entire application
+   ========================================== */
+
+:root {
+/* ==========FONT SIZES========== */
+  --font-size-xs: 0.65rem; 
+  --font-size-sm: 0.775rem;
+  --font-size-md: 0.8rem;
+  --font-size-base: 0.9rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.125rem;
+  --font-size-2xl: 1.25rem;
+  --font-size-3xl: 1.5rem;
+  --font-size-4xl: 1.875rem;
+
+/* ==========FONT WEIGHTS========== */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+/* ==========CURRENTLY USING THEMES ARE BELOW========== */
+/* == SIDE MENU == */
+  --sidebar-bg-start: #CBDDE9;
+  --sidebar-bg-end: var(--sidebar-bg-start);
+  --sidebar-header-bg: var(--sidebar-bg-start);
+  --sidebar-item-hover:#c0bfbf;
+  --sidebar-item-active: #000000;
+  --sidebar-text: #2872A1;
+  --sidebar-text-active: #ffffff;
+  --sidebar-bg-active : var(--sidebar-text);
+/* == TOP MENU COLORS == */
+  --header-bg: var(--sidebar-bg-start);
+  --header-text: var(--sidebar-text);
+/*== PAGE THEME PRIMARY COLORS ==*/
+  --page-primary-color: var(--sidebar-bg-start);
+  --page-secondary-color: var(--sidebar-text);
+
+/* == TEXT COLORS == */
+  --text-primary: #2d465e;
+/* == INPUT FOCUS COLOR == */
+  --border-color-input-focus: var(--page-primary-color); 
+/* == HOME LINK BG == */
+--transparent-bg: #d6d6d6;
+
+
+/* == PAGE HEADER COLORS == */
+  --page-header-bg: #fefefe;              /* Page header background */
+  --page-header-icon-bg: var(--page-primary-color) !important;         /* Page header icon background */
+  --page-header-icon-color: var(--page-secondary-color) !important;   /* Page header icon color */
+  --page-header-text: #000000;            /* Page header text */
+  --page--header-subtitle: #ffffff;        /* Page header subtitle text */
+  --page-header-badge-bg: #ffffff;        /* Page header badge background */
+  --page-header-badge-text: #000000;      /* Page header badge text */
+
+  
+/* == TABLE HEADER COLORS == */
+  --table-header-bg: #e8e8e8;             /* Table header background (gray) */
+  --table-header-text: #000000;           /* Table header text */
+
+/* ========== CORE COLOR PALETTE ========== */
+  --color-primary: #5f4a8b;                 /* Primary Blue */
+  --color-success: #198754;                 /* Success Green */
+  --color-info: #17a2b8;                    /* Info Cyan */
+  --color-warning: #ffc107;                 /* Warning Yellow */
+  --color-danger: #dc3545;                  /* Danger Red */
+  --color-text: #000000;                    /* Main Text Color */
+  --color-secondary: #6c757d;               /* Secondary Gray */
+  --color-text-secondary: #ffffff;          /* Secondary Text Color */
+  
+  /* ========== PRIMARY COLORS ========== */
+  --primary-color: #0050ab;           
+  --primary-color-light: rgba(74, 144, 226, 0.25);
+  --secondary-color: #d8d8d8;
+  /* ========== BUTTON COLORS ========== */
+  --btn-primary:#0050ab;
+  --btn-success:#198754;
+  --btn-secondary: #8d8d8d;
+  /* ========== TEXT COLORS ========== */
+  --text-dark: #2d3748;
+  --text-white: #ffffff;
+  --text-muted: #718096;
+  --text-white-muted: rgba(255, 255, 255, 0.6);
+  
+  /* ========== BACKGROUND COLORS ========== */
+  --bg-white: #ffffff;
+  --bg-main: #f5f5f5;
+  
+  /* ========== BORDER COLORS ========== */
+  --border-color: #e0e0e0;
+  
+  /* ========== SHADOWS ========== */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  
+  /* ========== GRADIENTS ========== */
+  --gradient-primary: linear-gradient(135deg, #4a90e2 0%, #2d6bb8 100%);
+  --gradient-primary-reverse: linear-gradient(135deg, #2d6bb8 0%, #4a90e2 100%);
+  --gradient-sidebar: linear-gradient(180deg, var(--sidebar-bg-start), var(--sidebar-bg-end));
+  
+  /* ========== SIDEBAR ========== */
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 70px;
+  
+  /* ========== SCROLLBAR ========== */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
+  
+  /* ========== BADGES ========== */
+  --badge-danger: #ff4444;
+  
+  /* ========== TOOLTIPS ========== */
+  --tooltip-bg: #333333;
+  --tooltip-text: #ffffff;
+  
+  /* ========== OVERLAYS ========== */
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  
+  /* ========== SPINNER ========== */
+  --spinner-border: rgba(255, 255, 255, 0.3);
+  
+  /* ========== TRANSITIONS ========== */
+  --transition-normal: 0.3s ease;
+  
+  /* ========== BORDER RADIUS ========== */
+  --border-radius-sm: 4px;
+  
+  
+  
+/* ========== TABLE STYLING ========== */
+table thead {
+  background-color: var(--table-header-bg) !important;
+  color: var(--table-header-text) !important;
+}
+
+table thead tr {
+  background-color: var(--table-header-bg) !important;
+}
+
+table thead th {
+  background-color: var(--table-header-bg) !important;
+  color: var(--table-header-text) !important;
+}
+}
+
+/* ========== TYPOGRAPHY ========== */
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-size: var(--font-size-sm);
+}
+
+h1 { font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); }
+h2 { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); }
+h3 { font-size: var(--font-size-2xl); font-weight: var(--font-weight-semibold); }
+h4 { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); }
+h5 { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); }
+h6 { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+
+.form-control, .form-select {
+  font-size: var(--font-size-sm) !important;
+}
+
+.btn {
+  font-size: var(--font-size-sm) !important;
+}
+
+.small, small {
+  font-size: var(--font-size-xs) !important;
+}
+
+/* ========== FLOATING LABEL STYLES ========== */
+.floating-label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  padding: 0 5px;
+  color: #6c757d;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.form-control:focus ~ .floating-label,
+.form-control:not(:placeholder-shown) ~ .floating-label {
+  top: 0;
+  left: 10px;
+  background: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--page-secondary-color) !important;
+}
+
+/* Floating Label for Select */
+.floating-label-select {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  background: white;
+  padding: 0 5px;
+  color: var(--page-secondary-color) !important;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+/* ========== BILLING ACTION BUTTONS ========== */
+.btn.billing-action-btn {
+  background-color: var(--page-secondary-color) !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-primary-color) !important;
+  font-size: var(--font-size-base) !important;
+  padding: 6px 16px !important;
+  min-width: 90px !important;
+}
+.btn.billing-action-btn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+.btn.billing-action-btn:disabled {
+  opacity: 0.55;
+}
+.btn.billing-action-btn.billing-save-btn {
+  background-color: var(--page-primary-color) !important;
+  border-color: var(--page-primary-color) !important;
+  color: var(--page-secondary-color) !important;
+}
+
+/* ========== THEME BUTTONS ========== */
+.theme-outline-btn-primary {
+  background-color: transparent !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-secondary-color) !important;
+}
+
+.theme-outline-btn-primary.is-selected {
+  background-color: var(--page-secondary-color) !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-primary-color) !important;
+}
+
+.theme-outline-btn-secondary {
+  background-color: transparent !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-primary-color) !important;
+}
+
+.theme-outline-btn-secondary.is-selected {
+  background-color: var(--page-primary-color) !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-secondary-color) !important;
+}
+
+.theme-btn-primary {
+  background-color: var(--page-primary-color) !important;
+  border-color: var(--page-primary-color) !important;
+  color: var(--page-secondary-color) !important;
+}
+
+.theme-btn-secondary {
+  background-color: var(--page-secondary-color) !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-primary-color) !important;
+}
+
+.advance-action-btn {
+  background-color: var(--page-secondary-color) !important;
+  border-color: var(--page-secondary-color) !important;
+  color: var(--page-primary-color) !important;
+  opacity: 0.55;
+}
+.advance-action-btn.is-selected {
+  opacity: 1;
+  border-color: var(--page-primary-color) !important;
+  font-weight: 600;
+}
+
+.theme-btn-link-secondary {
+  color: var(--page-secondary-color) !important;
+  text-decoration: none !important;
+  padding: 4px 8px !important;
+}
+
+/* ========== THEME BADGE UTILITIES ========== */
+.theme-badge-primary {
+  background-color: var(--page-primary-color) !important;
+  color: var(--page-secondary-color) !important;
+}
+
+.theme-badge-secondary {
+  background-color: var(--page-secondary-color) !important;
+  color: var(--page-primary-color) !important;
+  border: 1px solid var(--page-primary-color) !important;
+}

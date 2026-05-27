@@ -1,0 +1,8 @@
+-- System Admin Ward Management
+-- System Admin Room/Bed Management
+-- System Admin Cash Type Master
+-- System Admin Bank Payment Mode Master
+-- System Admin Bank Details Master
+-- System Admin User Management
+-- System Admin Store Configuration
+-- System Admin Circular Management

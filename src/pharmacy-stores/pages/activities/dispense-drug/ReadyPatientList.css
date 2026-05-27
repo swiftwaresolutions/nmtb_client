@@ -1,0 +1,242 @@
+/* Featured Patient Section - Digital Signage Style */
+.featured-patient-section {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.featured-patient-card {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(40, 167, 69, 0.3);
+  text-align: center;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured-label {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 2px;
+  opacity: 0.9;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.featured-name {
+  font-size: calc(var(--font-size-4xl) * 1.6);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 15px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.featured-details {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  opacity: 0.95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-item {
+  padding: 0 8px;
+}
+
+.detail-separator {
+  opacity: 0.7;
+}
+
+/* Waiting List - Card Grid Layout */
+.card-body-style {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.patient-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.patient-card:hover {
+  border-color: #28a745;
+  box-shadow: 0 4px 16px rgba(40, 167, 69, 0.15);
+  transform: translateY(-2px);
+}
+
+.queue-number {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.patient-info {
+  flex: 1;
+  margin-top: 10px;
+}
+
+.patient-name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.patient-bill {
+  font-size: var(--font-size-base);
+  color: #555;
+  margin-bottom: 6px;
+  font-weight: var(--font-weight-medium);
+}
+
+.patient-op {
+  font-size: var(--font-size-base);
+  color: #777;
+  font-weight: var(--font-weight-medium);
+}
+
+.patient-status-badge {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 20px;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  align-self: flex-start;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #28a745;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .patients-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .featured-name {
+    font-size: calc(var(--font-size-4xl) * 1.333);
+  }
+}
+
+@media (max-width: 768px) {
+  .patients-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .featured-patient-card {
+    padding: 20px 30px;
+    min-height: 140px;
+  }
+
+  .featured-name {
+    font-size: calc(var(--font-size-4xl) * 1.067);
+  }
+
+  .featured-details {
+    font-size: var(--font-size-lg);
+  }
+
+  .patient-name {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .patients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-patient-card {
+    padding: 15px 20px;
+    min-height: 120px;
+  }
+
+  .featured-name {
+    font-size: var(--font-size-3xl);
+  }
+
+  .featured-label {
+    font-size: var(--font-size-base);
+  }
+
+  .featured-details {
+    font-size: var(--font-size-base);
+  }
+
+  .patient-card {
+    padding: 16px;
+  }
+
+  .patient-name {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Empty State */
+.text-muted {
+  font-size: var(--font-size-xl);
+}

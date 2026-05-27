@@ -1,0 +1,166 @@
+import React, { useState, useEffect } from 'react';
+import { Card, Row, Col, Form, Button, Table, Badge } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../state/store';
+import PageHeader from '../../../components/PageHeader';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { showErrorToast, showSuccessToast } from '../../../utils/alertUtil';
+import SearchInput from '../../../components/SearchInput';
+import { useTableSearch } from '../../../hooks/useTableSearch';
+
+const PendingAdv: React.FC = () => {
+  const loginData = useSelector((state: RootState) => state.loginData);
+  const [loading, setLoading] = useState(false);
+  const [reportData, setReportData] = useState<any[]>([]);
+  
+  const [formData, setFormData] = useState({
+    fromDate: new Date().toISOString().split('T')[0],
+    toDate: new Date().toISOString().split('T')[0],
+  });
+
+  const {
+    filteredData,
+    searchTerm,
+    setSearchTerm,
+    resultCount,
+    totalCount,
+  } = useTableSearch({
+    data: reportData,
+    searchFields: ['patientName', 'uhid', 'advanceNo'],
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleGenerateReport = async () => {
+    try {
+      setLoading(true);
+      // TODO: Implement API call to fetch pending advance report
+      // const response = await cashCounterApiService.getPendingAdvReport(formData);
+      // setReportData(response);
+      showSuccessToast('Report generated successfully');
+    } catch (error) {
+      console.error('Error generating report:', error);
+      showErrorToast('Failed to generate report');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+      <PageHeader
+        icon={faExclamationCircle}
+        title="Pending Advance Report"
+        subtitle="Track pending advance payments"
+      />
+      
+      <div className="content-body" style={{ flex: 1, overflow: 'auto', padding: '1.5rem' }}>
+        <Card className="shadow-sm mb-4">
+          <Card.Header className="bg-primary text-white">
+            <h5 className="mb-0">Report Filters</h5>
+          </Card.Header>
+          <Card.Body>
+            <Row>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>From Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="fromDate"
+                    value={formData.fromDate}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>To Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="toDate"
+                    value={formData.toDate}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4} className="d-flex align-items-end">
+                <Button 
+                  variant="primary" 
+                  className="w-100 mb-3"
+                  onClick={handleGenerateReport}
+                  disabled={loading}
+                >
+                  {loading ? 'Generating...' : 'Generate Report'}
+                </Button>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+
+        <Card className="shadow-sm">
+          <Card.Header className="bg-light">
+            <div className="d-flex justify-content-between align-items-center">
+              <h5 className="mb-0">Pending Advance Details</h5>
+              <SearchInput
+                searchTerm={searchTerm}
+                onSearchChange={setSearchTerm}
+                placeholder="Search by patient name, UHID, or advance number..."
+                resultCount={resultCount}
+                totalCount={totalCount}
+              />
+            </div>
+          </Card.Header>
+          <Card.Body>
+            <div style={{ maxHeight: 'calc(100vh - 400px)', overflow: 'auto' }}>
+              <Table striped bordered hover>
+                <thead style={{ position: 'sticky', top: 0, backgroundColor: '#f8f9fa', zIndex: 1 }}>
+                  <tr>
+                    <th>#</th>
+                    <th>UHID</th>
+                    <th>Patient Name</th>
+                    <th>Advance No</th>
+                    <th>Date</th>
+                    <th>Advance Amount</th>
+                    <th>Utilized Amount</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData.length === 0 ? (
+                    <tr>
+                      <td colSpan={9} className="text-center text-muted">
+                        {searchTerm ? 'No results match your search.' : 'No data available. Please generate report.'}
+                      </td>
+                    </tr>
+                  ) : (
+                    filteredData.map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{item.uhid}</td>
+                        <td>{item.patientName}</td>
+                        <td>{item.advanceNo}</td>
+                        <td>{item.date}</td>
+                        <td>{item.advanceAmount}</td>
+                        <td>{item.utilizedAmount}</td>
+                        <td className="text-success fw-bold">{item.balance}</td>
+                        <td>
+                          <Badge bg="info">Pending</Badge>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </Table>
+            </div>
+          </Card.Body>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default PendingAdv;

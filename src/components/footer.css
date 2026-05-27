@@ -1,0 +1,44 @@
+.footer-watermark {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  background: transparent;
+  padding: 8px 16px;
+  pointer-events: none;
+}
+
+.footer-watermark .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+@import '../style/theme.css';
+
+.footer-watermark h6 {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--footer-text);
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+  user-select: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-watermark h6 {
+    font-size: var(--font-size-xs);
+  }
+  
+  .footer-watermark {
+    padding: 6px 12px;
+  }
+}
+
+/* For dark theme compatibility */
+@media (prefers-color-scheme: dark) {
+  .footer-watermark h6 {
+    color: var(--footer-text-dark);
+  }
+}
