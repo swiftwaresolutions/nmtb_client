@@ -270,6 +270,15 @@
     );
 }
 
+.cash-counter-layout .module-content {
+    background: linear-gradient(
+        135deg,
+        var(--sa-surface-light) 0%,
+        var(--sa-surface-warm) 60%,
+        var(--sa-accent-soft) 100%
+    );
+}
+
 /* Content Area */
 .module-content {
     transition: all var(--transition-normal);

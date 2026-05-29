@@ -22,6 +22,7 @@ export interface MenuItemConfig {
   url?: string;
   accessCode?: number;
   icon: string;
+  iconColor?: string;
   submenus?: MenuItemConfig[];
 }
 
@@ -39,13 +40,14 @@ export const cashCounterMenuConfig: ModuleMenuConfig = {
       id: "billing",
       name: "Billing",
       icon: "fas fa-file-invoice-dollar",
+      iconColor: '#e83e8c',
       accessCode: 26,
       submenus: [
         {
           id: "op-billing",
           name: "Billing",
           url: routerPathNames.cashCounter.billing.opBilling,
-          icon: "fas fa-bed",
+          icon: "fa-solid fa-money-check-dollar",
           accessCode: 237
         },
          {

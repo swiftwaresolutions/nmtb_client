@@ -22,7 +22,7 @@ const CashCounterLayout: React.FC = () => {
   }, [loginData, navigate]);
 
   return (
-    <div className="cash-counter-layout" style={{
+    <div className="cash-counter-layout selection-area-login-theme" style={{
       width: '100%',
       overflow: 'hidden'
     }}>

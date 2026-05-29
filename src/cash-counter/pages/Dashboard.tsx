@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button, Table, Badge } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Table } from 'react-bootstrap';
 import { 
   FaRupeeSign, 
   FaFileInvoiceDollar, 
@@ -64,12 +64,40 @@ const CashCounterDashboard: React.FC = () => {
   ];
 
   const quickActions = [
-    { title: 'Billing', path: routerPathNames.cashCounter.billing.opBilling, icon: FaFileInvoiceDollarIcon, color: '#0d6efd' },
-    { title: 'Order List / Cancel', path: routerPathNames.cashCounter.billing.CancelOrder, icon: FaTimesCircleIcon, color: '#dc3545' },
-    { title: 'Duplicate Bill', path: routerPathNames.cashCounter.activities.duplicateBill, icon: FaReceiptIcon, color: '#fd7e14' }
+    {
+      title: 'Billing',
+      path: routerPathNames.cashCounter.billing.opBilling,
+      icon: FaFileInvoiceDollarIcon,
+      iconColor: 'var(--btn-primary)',
+      iconBg: 'var(--bg-white)',
+      cardBg: 'var(--primary-color-light)'
+    },
+    {
+      title: 'Order List / Cancel',
+      path: routerPathNames.cashCounter.billing.CancelOrder,
+      icon: FaTimesCircleIcon,
+      iconColor: 'var(--color-danger)',
+      iconBg: 'var(--bg-white)',
+      cardBg: 'var(--secondary-color)'
+    },
+    {
+      title: 'Duplicate Bill',
+      path: routerPathNames.cashCounter.activities.duplicateBill,
+      icon: FaReceiptIcon,
+      iconColor: 'var(--color-info)',
+      iconBg: 'var(--bg-white)',
+      cardBg: 'var(--sidebar-bg-start)'
+    }
   ];
 
   return (
+    <div
+      className="content-body selection-area-login-theme"
+      style={{
+        background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)',
+        minHeight: '100%'
+      }}
+    >
     <Container fluid className="p-4">
       {/* Header */}
       <div className="content-header mb-4">
@@ -86,34 +114,73 @@ const CashCounterDashboard: React.FC = () => {
       {/* Quick Actions */}
       <Row className="mb-4">
         <Col xs={12}>
-          <Card className="border-0 shadow-sm">
+          <Card className="border-0" style={{ background: 'var(--bg-white)', boxShadow: 'var(--shadow-sm)' }}>
             <Card.Body className="p-4">
-              <h5 className="mb-3">
-                <FaChartLineIcon className="me-2" />
-                Quick Actions
-              </h5>
+              <div
+                className="mb-3"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '0.75rem'
+                }}
+              >
+                <h5
+                  className="mb-0"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: 'var(--page-secondary-color)',
+                    fontWeight: 'var(--font-weight-semibold)'
+                  }}
+                >
+                  <FaChartLineIcon className="me-2" color="var(--btn-primary)" />
+                  Quick Actions
+                </h5>
+              </div>
               <Row className="g-3">
                 {quickActions.map((action, index) => (
-                  <Col xs={6} md={3} key={index}>
+                  <Col xs={12} md={4} key={index}>
                     <Button 
                       variant="light" 
-                      className="w-100 py-3 border-0 shadow-sm"
+                      className="w-100 py-3 border-0"
                       style={{ 
-                        backgroundColor: '#fff',
-                        transition: 'all 0.2s',
-                        cursor: 'pointer'
+                        background: action.cardBg,
+                        borderRadius: 'calc(var(--border-radius-sm) * 4)',
+                        boxShadow: 'var(--shadow-sm)',
+                        transition: 'var(--transition-normal)',
+                        cursor: 'pointer',
+                        minHeight: '118px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        borderTop: `3px solid ${action.iconColor}`
                       }}
                       onMouseOver={(e) => {
                         e.currentTarget.style.transform = 'translateY(-2px)';
-                        e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+                        e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 1px 2px rgba(0,0,0,0.075)';
+                        e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                       }}
                       onClick={() => navigate(action.path)}
                     >
-                      <action.icon size={32} color={action.color} className="mb-2" />
+                      <div
+                        className="mb-2"
+                        style={{
+                          width: '46px',
+                          height: '46px',
+                          borderRadius: '50%',
+                          background: action.iconBg,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 auto'
+                        }}
+                      >
+                        <action.icon size={24} color={action.iconColor} />
+                      </div>
                       <div className="fw-semibold" style={{ color: 'var(--page-secondary-color)', fontSize: 'var(--font-size-sm)' }}>
                         {action.title}
                       </div>
@@ -131,6 +198,7 @@ const CashCounterDashboard: React.FC = () => {
       {/* Recent Transactions */}
       
     </Container>
+    </div>
   );
 };
 
