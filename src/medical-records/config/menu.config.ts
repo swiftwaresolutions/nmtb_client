@@ -7,6 +7,7 @@ export interface MenuItemConfig {
   url?: string;
   accessCode?: number;
   icon: string;
+  iconColor?: string;
   submenus?: MenuItemConfig[];
 }
 
@@ -24,6 +25,7 @@ export const medicalRecordsMenuConfig: ModuleMenuConfig = {
       id: "registration",
       name: "Registration",
       icon: "fas fa-user-plus",
+      iconColor: 'var(--btn-primary)',
       accessCode: 1,
       submenus: [
         {
@@ -31,6 +33,7 @@ export const medicalRecordsMenuConfig: ModuleMenuConfig = {
           name: "Patient Registration",
           url: routerPathNames.medicalRecords.registration.patient,
           icon: "fas fa-user-circle",
+          iconColor: 'var(--btn-success)',
           accessCode: 1
         },
         {

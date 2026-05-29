@@ -157,10 +157,19 @@
 .menu-item-icon {
     min-width: 40px;
     font-size: var(--font-size-xl);
+    color: var(--menu-icon-color, var(--sidebar-text));
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all var(--transition-normal);
+}
+
+.menu-item-button:hover .menu-item-icon {
+    color: var(--menu-icon-color, var(--sidebar-text));
+}
+
+.menu-item-button.active .menu-item-icon {
+    color: var(--sidebar-text-active);
 }
 
 .menu-item-text {
@@ -220,6 +229,45 @@
 
 .module-sidebar.collapsed .submenu {
     display: none;
+}
+
+/* Medical Records sidebar themed like SelectionArea */
+.module-sidebar.selection-area-login-theme {
+    --sidebar-bg-start: var(--sa-surface-light);
+    --sidebar-bg-end: var(--sa-surface-warm);
+    --sidebar-header-bg: var(--sa-card-bg);
+    --sidebar-text: var(--sa-dark);
+    --sidebar-item-hover: var(--sa-surface-warm);
+    --sidebar-item-active: var(--sa-accent);
+    --sidebar-bg-active: var(--sa-accent);
+    --sidebar-text-active: var(--sa-white);
+    background: linear-gradient(180deg, var(--sidebar-bg-start), var(--sidebar-bg-end));
+    box-shadow: var(--sa-card-shadow);
+}
+
+.module-sidebar.selection-area-login-theme .sidebar-header {
+    border-bottom: 1px solid var(--sa-accent-soft);
+    box-shadow: var(--sa-card-shadow);
+}
+
+.module-sidebar.selection-area-login-theme .menu-item-button:hover {
+    background: var(--sidebar-item-hover);
+}
+
+.module-sidebar.selection-area-login-theme .menu-item-button.active {
+    background: var(--sidebar-bg-active);
+    color: var(--sidebar-text-active);
+    border-left: 3px solid var(--sidebar-item-active);
+}
+
+/* Page content area in SelectionArea background family */
+.medical-records-layout .module-content {
+    background: linear-gradient(
+        135deg,
+        var(--sa-surface-light) 0%,
+        var(--sa-surface-warm) 60%,
+        var(--sa-accent-soft) 100%
+    );
 }
 
 /* Content Area */

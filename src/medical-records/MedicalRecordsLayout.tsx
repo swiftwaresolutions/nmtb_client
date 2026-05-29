@@ -23,7 +23,7 @@ const MedicalRecordsLayout: React.FC = () => {
   }, [loginData, navigate]);
 
   return (
-    <div className="medical-records-layout" style={{
+    <div className="medical-records-layout selection-area-login-theme" style={{
       display: 'flex',
       height: '100%',
       width: '100%',

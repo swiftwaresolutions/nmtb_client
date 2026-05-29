@@ -18,16 +18,22 @@ const MedicalRecordsDashboard: React.FC<DashboardProps> = ({ moduleName = "Medic
   ];
 
   return (
-    <div className="content-body">
+    <div
+      className="content-body selection-area-login-theme"
+      style={{
+        background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)',
+        minHeight: '100%'
+      }}
+    >
       <Container fluid>
         {/* Page Header */}
         <Row className="mb-4">
           <Col>
           <br />
-            <h2 style={{ color: 'var(--page-secondary-color)', fontWeight: '700', marginBottom: '0.5rem' }}>
+            <h2 style={{ color: 'var(--sa-dark)', fontWeight: 'var(--font-weight-bold)', marginBottom: '0.5rem' }}>
               Medical Records Dashboard
             </h2>
-            <p style={{ color: '#6c757d', fontSize: '1rem' }}>
+            <p style={{ color: 'var(--sa-muted)', fontSize: 'var(--font-size-base)' }}>
               Manage patient registrations, records, and medical information
             </p>
           </Col>
@@ -39,7 +45,7 @@ const MedicalRecordsDashboard: React.FC<DashboardProps> = ({ moduleName = "Medic
         {/* Quick Actions */}
         <Row className="mb-4">
           <Col>
-            <h5 style={{ color: 'var(--page-secondary-color)', fontWeight: 'var(--font-weight-semibold)', marginBottom: '1rem' }}>
+            <h5 style={{ color: 'var(--primary-color)', fontWeight: 'var(--font-weight-semibold)', marginBottom: '1rem' }}>
               Quick Actions
             </h5>
           </Col>
@@ -52,33 +58,34 @@ const MedicalRecordsDashboard: React.FC<DashboardProps> = ({ moduleName = "Medic
               <Card 
                 className="shadow-sm border-0 h-100" 
                 style={{ 
+                  background: 'var(--sa-white)',
                   cursor: 'pointer',
                   transition: 'transform 0.2s, box-shadow 0.2s',
                   overflow: 'hidden'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                 }}
               >
                 <div style={{ 
-                  background: 'var(--page-primary-color)', 
+                  background: 'var(--gradient-primary)', 
                   padding: '1rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <i className="fas fa-user-plus" style={{ fontSize: '2.5rem', color: 'var(--page-secondary-color)' }}></i>
+                  <i className="fas fa-user-plus" style={{ fontSize: '2.5rem', color: 'var(--sa-white)' }}></i>
                 </div>
                 <Card.Body>
                   <h5 style={{ color: 'var(--page-secondary-color)', fontWeight: 'var(--font-weight-semibold)' }}>
                     Patient Registration
                   </h5>
-                  <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                  <p className="mb-0" style={{ color: 'var(--sa-muted)', fontSize: 'var(--font-size-sm)' }}>
                     Register new OP patients or update existing patient records with complete demographics
                   </p>
                 </Card.Body>
@@ -92,33 +99,34 @@ const MedicalRecordsDashboard: React.FC<DashboardProps> = ({ moduleName = "Medic
               <Card 
                 className="shadow-sm border-0 h-100" 
                 style={{ 
+                  background: 'var(--sa-white)',
                   cursor: 'pointer',
                   transition: 'transform 0.2s, box-shadow 0.2s',
                   overflow: 'hidden'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                 }}
               >
                 <div style={{ 
-                  background: '#e74c3c', 
+                  background: 'var(--btn-success)', 
                   padding: '1rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <i className="fas fa-bed" style={{ fontSize: '2.5rem', color: '#fff' }}></i>
+                  <i className="fas fa-bed" style={{ fontSize: '2.5rem', color: 'var(--sa-white)' }}></i>
                 </div>
                 <Card.Body>
-                  <h5 style={{ color: '#e74c3c', fontWeight: 'var(--font-weight-semibold)' }}>
+                  <h5 style={{ color: 'var(--btn-success)', fontWeight: 'var(--font-weight-semibold)' }}>
                     In-Patient Registration
                   </h5>
-                  <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                  <p className="mb-0" style={{ color: 'var(--sa-muted)', fontSize: 'var(--font-size-sm)' }}>
                     Admit new IP patients, assign beds, and manage inpatient ward allocations
                   </p>
                 </Card.Body>
@@ -132,33 +140,34 @@ const MedicalRecordsDashboard: React.FC<DashboardProps> = ({ moduleName = "Medic
               <Card 
                 className="shadow-sm border-0 h-100" 
                 style={{ 
+                  background: 'var(--sa-white)',
                   cursor: 'pointer',
                   transition: 'transform 0.2s, box-shadow 0.2s',
                   overflow: 'hidden'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                 }}
               >
                 <div style={{ 
-                  background: '#3498db', 
+                  background: 'var(--color-info)', 
                   padding: '1rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <i className="fas fa-file-alt" style={{ fontSize: '2.5rem', color: '#fff' }}></i>
+                  <i className="fas fa-file-alt" style={{ fontSize: '2.5rem', color: 'var(--sa-white)' }}></i>
                 </div>
                 <Card.Body>
-                  <h5 style={{ color: '#3498db', fontWeight: 'var(--font-weight-semibold)' }}>
+                  <h5 style={{ color: 'var(--color-info)', fontWeight: 'var(--font-weight-semibold)' }}>
                     Refile Card
                   </h5>
-                  <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                  <p className="mb-0" style={{ color: 'var(--sa-muted)', fontSize: 'var(--font-size-sm)' }}>
                     Refile patient cards and manage medical record filing activities
                   </p>
                 </Card.Body>

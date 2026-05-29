@@ -40,6 +40,28 @@ const MenuItem: React.FC<MenuItemProps> = ({
     ? expandedMenuId === item.id
     : localExpanded;
 
+  const getFallbackIconColor = () => {
+    const palette = [
+      'var(--btn-primary)',
+      'var(--btn-success)',
+      'var(--color-info)',
+      'var(--color-warning)',
+      'var(--color-danger)',
+      'var(--primary-color)'
+    ];
+
+    const seed = `${menuPath}-${item.name}`;
+    let hash = 0;
+    for (let i = 0; i < seed.length; i += 1) {
+      hash = (hash << 5) - hash + seed.charCodeAt(i);
+      hash |= 0;
+    }
+    const index = Math.abs(hash) % palette.length;
+    return palette[index];
+  };
+
+  const resolvedIconColor = item.iconColor ?? getFallbackIconColor();
+
   const handleClick = () => {
     if (hasSubmenus) {
       if (level === 0 && setExpandedMenuId) {
@@ -59,7 +81,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   // Get icon component (for FontAwesome)
   const getIconElement = () => {
-    return <i className={item.icon}></i>;
+    return <i className={item.icon} style={item.iconColor ? { color: item.iconColor } : undefined}></i>;
   };
 
   return (
@@ -69,7 +91,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
         onClick={handleClick}
         title={collapsed ? item.name : ''}
       >
-        <span className="menu-item-icon">
+        <span
+          className="menu-item-icon"
+          style={{ '--menu-icon-color': resolvedIconColor } as React.CSSProperties}
+        >
           {getIconElement()}
         </span>
         <span className="menu-item-text">{item.name}</span>
