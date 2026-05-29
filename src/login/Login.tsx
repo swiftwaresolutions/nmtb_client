@@ -9,6 +9,7 @@ import { authLogout } from './components/state/loginSlice'
 import { RootState } from '../state/store'
 import { routerPathNames } from '../routes/routerPathNames'
 import himsConfig from '../himsConfig'
+import logoImage from '../components/logo-1.jpg'
 
 const Login = () => {
 
@@ -108,7 +109,16 @@ const Login = () => {
                         marginBottom: '2rem',
                         border: '3px solid rgba(255, 255, 255, 0.3)'
                       }}>
-                        <i className="fas fa-hospital" style={{ fontSize: '4rem', color: 'var(--page-secondary-color)' }}></i>
+                        <img
+                          src={logoImage}
+                          alt="Hospital logo"
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            borderRadius: '50%',
+                            objectFit: 'cover'
+                          }}
+                        />
                       </div>
 
                       {/* Branding Text */}
@@ -149,7 +159,16 @@ const Login = () => {
                           justifyContent: 'center',
                           marginBottom: '1rem'
                         }}>
-                          <i className="fas fa-hospital" style={{ fontSize: '2.5rem', color: 'var(--page-secondary-color)' }}></i>
+                          <img
+                            src={logoImage}
+                            alt="Hospital logo"
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: '50%',
+                              objectFit: 'cover'
+                            }}
+                          />
                         </div>
                         <h3 style={{ color: 'var(--page-primary-color)', fontWeight: '700', marginBottom: '0.5rem' }}>
                           HIMS
@@ -303,30 +322,31 @@ const Login = () => {
                 </Row>
               </div>
 
-              {/* Copyright Footer */}
-              <div className="text-center mt-4">
-                <div style={{
-                  background: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: '10px',
-                  padding: '0.75rem 1.5rem',
-                  display: 'inline-block',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
-                }}>
-                  <p style={{ 
-                    color: '#fff', 
-                    fontSize: '0.9rem', 
-                    marginBottom: 0, 
-                    textShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                    fontWeight: '500'
-                  }}>
-                    © {new Date().getFullYear()} Swiftware Solutions. All rights reserved.
-                  </p>
-                </div>
-              </div>
             </Col>
           </Row>
         </Container>
+
+        {/* Copyright Footer */}
+        <div
+          style={{
+            position: 'absolute',
+            right: '20px',
+            bottom: '16px',
+            zIndex: 5,
+            textAlign: 'right'
+          }}
+        >
+          <p
+            style={{
+              color: 'var(--text-white)',
+              fontSize: 'var(--font-size-sm)',
+              marginBottom: 0,
+              fontWeight: 'var(--font-weight-medium)'
+            }}
+          >
+            © {new Date().getFullYear()} Swiftware Solutions. All rights reserved.
+          </p>
+        </div>
       </div>
     </Fragment>
   )

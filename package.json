@@ -1,7 +1,7 @@
 {
   "name": "nmtb",
   "main": "./.webpack/main",
-  "homepage": "/nmtb-hims",
+  "homepage": "/nmtb",
   "version": "1.0.0",
   "description": "NMTB Application",
   "author": "HIMS",

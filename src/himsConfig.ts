@@ -4,7 +4,7 @@ const isDev: boolean = process.env.NODE_ENV !== 'production';
 // const hostAddress = isDev ? "192.168.1.60" : "192.168.251.150"    //  window.location.hostname
 const hostAddress = isDev ? "192.168.1.20" : "192.168.251.150"    //  window.location.hostname
 
-let routerBaseUrl = "/nmtb-hims";
+let routerBaseUrl = "/nmtb";
 
 const himsConfig = {
   hospitalFullName: process.env.REACT_APP_HOSPITAL_FULL_NAME || "NIGHTINGALE MEDICAL TRUST",  
