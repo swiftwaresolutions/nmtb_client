@@ -30,6 +30,7 @@ const Login = () => {
   const [user, setUser] = useState({ userName: "", password: "" })
   const [errorMessage, setErrorMessage] = useState("")
   const [organizationName, setOrganizationName] = useState(himsConfig.hospitalFullName)
+  const [showIntro, setShowIntro] = useState(true)
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -81,9 +82,83 @@ const Login = () => {
     getOrganizationDetails()
   }, [])
 
+  useEffect(() => {
+    const introTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setShowIntro(false)
+    }, 2000)
+
+    return () => clearTimeout(introTimer)
+  }, [])
+
   
   return (
     <Fragment>
+      <style>
+        {`
+          @keyframes introPulse {
+            0% { opacity: 0.6; transform: scale(0.96); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.6; transform: scale(0.96); }
+          }
+
+          @keyframes introLoading {
+            0% { transform: scaleX(0); transform-origin: left; }
+            50% { transform: scaleX(1); transform-origin: left; }
+            100% { transform: scaleX(0); transform-origin: right; }
+          }
+
+          .intro-animated-title {
+            animation: introPulse 1.2s ease-in-out infinite;
+          }
+
+          .intro-loading-track {
+            width: 180px;
+            height: 4px;
+            margin: 14px auto 0;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.45);
+            overflow: hidden;
+          }
+
+          .intro-loading-line {
+            width: 100%;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, ${brandAccent} 0%, ${brandAccentSoft} 100%);
+            animation: introLoading 1.2s ease-in-out infinite;
+          }
+        `}
+      </style>
+
+      {showIntro && (
+        <div
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: `linear-gradient(135deg, ${brandSurfaceLight} 0%, ${brandSurfaceWarm} 60%, ${brandAccentSoft} 100%)`
+          }}
+        >
+          <div
+            className="intro-animated-title"
+            style={{
+              color: brandDark,
+              fontSize: 'var(--font-size-4xl)',
+              fontWeight: 'var(--font-weight-bold)',
+              textAlign: 'center',
+              letterSpacing: '0.02em'
+            }}
+          >
+            SWIFTWARE HIMS
+            <div className="intro-loading-track">
+              <div className="intro-loading-line" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!showIntro && (
       <div style={{ 
         minHeight: '100vh',
         display: 'flex',
@@ -364,6 +439,7 @@ const Login = () => {
           </p>
         </div>
       </div>
+      )}
     </Fragment>
   )
 }
