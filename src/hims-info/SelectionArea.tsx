@@ -219,7 +219,7 @@ const SelectionArea: React.FC = () => {
                   <div style={{
                     width: '80px',
                     height: '80px',
-                    background: 'linear-gradient(135deg, var(--sa-accent) 0%, var(--sa-accent-soft) 100%)',
+                    background: module.iconGradient ?? 'linear-gradient(135deg, var(--sa-accent) 0%, var(--sa-accent-soft) 100%)',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -232,7 +232,7 @@ const SelectionArea: React.FC = () => {
                       className={module.iconName} 
                       style={{ 
                         fontSize: '2rem', 
-                        color: 'var(--sa-white)'
+                        color: module.iconColor ?? 'var(--sa-white)'
                       }}
                     ></i>
                   </div>
