@@ -4,7 +4,12 @@
 
 /* Header Background */
 .app-header {
+    --header-accent: #f75d00;
     background: var(--header-bg) !important;
+}
+
+.header-org-title {
+    color: var(--header-accent);
 }
 
 /* Header Home/Dashboard Link - Compact version */
@@ -12,7 +17,7 @@
     margin: 0.68rem;
     padding: 0.5rem 0.8rem;
     background: transparent;
-    color: var(--sidebar-text);
+    color: #f75d00;
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: var(--border-radius);
     cursor: pointer;
@@ -29,7 +34,7 @@
     background: rgba(0, 0, 0, 0.05);
     transform: translateY(-1px);
     box-shadow: none;
-    color: var(--sidebar-text);
+    color: #f75d00;
 }
 /* .header-home-link {
     display: inline-flex;
@@ -67,7 +72,7 @@
 .logout-btn {
     background: transparent !important;
     border: 1px solid rgba(0, 0, 0, 0.25) !important;
-    color: var(--sidebar-text) !important;
+    color: #f75d00 !important;
     border-radius: var(--border-radius);
     padding: 0.35rem 0.9rem;
     font-weight: var(--font-weight-medium);
@@ -75,7 +80,7 @@
 
 .logout-btn:hover {
     background: rgba(0, 0, 0, 0.05) !important;
-    color: var(--sidebar-text) !important;
+    color: #f75d00 !important;
 }
 
 .header-actions {
@@ -84,6 +89,24 @@
     justify-content: flex-end;
     gap: 0.75rem;
     flex-wrap: wrap;
+    color: var(--header-accent);
+}
+
+.header-action-link,
+.header-action-link:hover,
+.header-action-link:focus {
+    color: var(--header-accent);
+}
+
+.header-action-btn,
+.header-action-btn:hover,
+.header-action-btn:focus {
+    color: var(--header-accent);
+    text-decoration: none;
+}
+
+.header-user-name {
+    color: var(--header-accent);
 }
 
 .logout-countdown {
@@ -106,7 +129,7 @@
     padding: 0.5rem;
     background: transparent;
     border: 1px solid rgba(0, 0, 0, 0.25);
-    color: var(--sidebar-text);
+    color: var(--header-accent);
     border-radius: var(--border-radius-sm);
     cursor: pointer;
     transition: all var(--transition-normal);
@@ -120,12 +143,12 @@
 .mobile-menu-btn:hover {
     background: rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.35);
-    color: var(--sidebar-text);
+    color: var(--header-accent);
 }
 
 .mobile-menu-btn:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.15);
-    color: var(--sidebar-text);
+    color: var(--header-accent);
 }
 
 /* Responsive adjustments */

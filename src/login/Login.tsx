@@ -108,7 +108,7 @@ const Login = () => {
           }
 
           .intro-animated-title {
-            animation: introPulse 1.2s ease-in-out infinite;
+            animation: introPulse 1s ease-in-out infinite;
           }
 
           .intro-loading-track {
@@ -429,7 +429,7 @@ const Login = () => {
         >
           <p
             style={{
-              color: brandWhite,
+              color: 'black',
               fontSize: 'var(--font-size-sm)',
               marginBottom: 0,
               fontWeight: 'var(--font-weight-medium)'

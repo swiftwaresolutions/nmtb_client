@@ -33,7 +33,7 @@
   --sidebar-text-active: #ffffff;
   --sidebar-bg-active : var(--sidebar-text);
 /* == TOP MENU COLORS == */
-  --header-bg: var(--sidebar-bg-start);
+  --header-bg: #fff6ef;
   --header-text: var(--sidebar-text);
 /*== PAGE THEME PRIMARY COLORS ==*/
   --page-primary-color: var(--sidebar-bg-start);

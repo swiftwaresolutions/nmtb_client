@@ -74,16 +74,17 @@ const SelectionArea: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ 
+      <div className="selection-area-login-theme" style={{ 
+        minHeight: '100vh',
         padding: '4rem 2rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+        background: 'linear-gradient(135deg, var(--sa-surface-light) 0%, var(--sa-surface-warm) 60%, var(--sa-accent-soft) 100%)'
       }}>
         <div style={{ textAlign: 'center' }}>
           <div className="loading-spinner" style={{ margin: '0 auto 1rem' }}></div>
-          <p style={{ color: 'var(--page-primary-color)', fontSize: '1.1rem', fontWeight: 'var(--font-weight-semibold)' }}>
+          <p style={{ color: 'var(--sa-dark)', fontSize: '1.1rem', fontWeight: 'var(--font-weight-semibold)' }}>
             Loading modules...
           </p>
         </div>
@@ -92,20 +93,20 @@ const SelectionArea: React.FC = () => {
   }
 
   return (
-    <div style={{ 
-      background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
+    <div className="selection-area-login-theme" style={{ 
+      background: 'linear-gradient(135deg, var(--sa-surface-light) 0%, var(--sa-surface-warm) 60%, var(--sa-accent-soft) 100%)',
+      minHeight: '100vh',
       padding: '2rem 1rem 3rem',
-      // minHeight: '100vh',
       width: '100%'
     }}>
       <Container style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
         {/* Page Header Section */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'var(--sa-card-bg)',
           borderRadius: '12px',
           padding: '1rem 1.5rem',
           marginBottom: '1.5rem',
-          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
+          boxShadow: 'var(--sa-card-shadow)',
           border: '1px solid rgba(255, 255, 255, 0.3)'
         }}>
           <Row className="align-items-center mx-0">
@@ -115,14 +116,14 @@ const SelectionArea: React.FC = () => {
                 <div style={{
                   width: '50px',
                   height: '50px',
-                  background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
+                  background: 'linear-gradient(135deg, var(--sa-accent) 0%, var(--sa-accent-soft) 100%)',
                   borderRadius: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 3px 10px rgba(95, 74, 139, 0.25)'
+                  boxShadow: 'var(--sa-accent-shadow-sm)'
                 }}>
-                  <i className="fas fa-th-large" style={{ fontSize: '1.25rem', color: 'var(--page-secondary-color)' }}></i>
+                  <i className="fas fa-th-large" style={{ fontSize: '1.25rem', color: 'var(--sa-white)' }}></i>
                 </div>
                 
                 {/* Title & Subtitle */}
@@ -130,7 +131,7 @@ const SelectionArea: React.FC = () => {
                   <h1 style={{ 
                     fontSize: '1.35rem',
                     fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--page-primary-color)',
+                    color: 'var(--sa-dark)',
                     marginBottom: '0.15rem',
                     letterSpacing: '-0.3px'
                   }}>
@@ -138,7 +139,7 @@ const SelectionArea: React.FC = () => {
                   </h1>
                   <p style={{ 
                     fontSize: '0.85rem',
-                    color: '#6c757d',
+                    color: 'var(--sa-muted)',
                     marginBottom: 0
                   }}>
                     Welcome, <strong>{loginData.name}</strong>! Select a module to get started
@@ -151,11 +152,11 @@ const SelectionArea: React.FC = () => {
             <Col lg={4} className="text-lg-end mt-2 mt-lg-0">
               <div style={{
                 display: 'inline-block',
-                background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
-                color: 'var(--page-secondary-color)',
+                background: 'linear-gradient(135deg, var(--sa-accent) 0%, var(--sa-accent-soft) 100%)',
+                color: 'var(--sa-white)',
                 padding: '0.5rem 1rem',
                 borderRadius: '8px',
-                boxShadow: '0 3px 10px rgba(95, 74, 139, 0.25)'
+                boxShadow: 'var(--sa-accent-shadow-sm)'
               }}>
                 <div style={{ fontSize: '0.7rem', opacity: 0.9, marginBottom: '0.1rem' }}>
                   Available Modules
@@ -176,7 +177,7 @@ const SelectionArea: React.FC = () => {
                 <div
                   onClick={() => handleModuleClick(module)}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.95)',
+                    background: 'var(--sa-card-bg)',
                     borderRadius: '16px',
                     padding: '2rem 1.5rem',
                     cursor: 'pointer',
@@ -194,8 +195,8 @@ const SelectionArea: React.FC = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(95, 74, 139, 0.25)';
-                    e.currentTarget.style.borderColor = 'var(--page-primary-color)';
+                    e.currentTarget.style.boxShadow = 'var(--sa-hover-shadow)';
+                    e.currentTarget.style.borderColor = 'var(--sa-accent)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)';
@@ -211,27 +212,27 @@ const SelectionArea: React.FC = () => {
                     left: 0,
                     right: 0,
                     height: '4px',
-                    background: 'linear-gradient(90deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)'
+                    background: 'linear-gradient(90deg, var(--sa-accent) 0%, var(--sa-accent-soft) 100%)'
                   }}></div>
 
                   {/* Icon */}
                   <div style={{
                     width: '80px',
                     height: '80px',
-                    background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
+                    background: 'linear-gradient(135deg, var(--sa-accent) 0%, var(--sa-accent-soft) 100%)',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '1.25rem',
-                    boxShadow: '0 5px 15px rgba(95, 74, 139, 0.3)',
+                    boxShadow: 'var(--sa-accent-shadow-md)',
                     transition: 'all 0.3s ease'
                   }}>
                     <i 
                       className={module.iconName} 
                       style={{ 
                         fontSize: '2rem', 
-                        color: 'var(--page-secondary-color)'
+                        color: 'var(--sa-white)'
                       }}
                     ></i>
                   </div>
@@ -240,7 +241,7 @@ const SelectionArea: React.FC = () => {
                   <h5 style={{
                     fontSize: '1.1rem',
                     fontWeight: 'var(--font-weight-bold)',
-                    color: '#2c3e50',
+                    color: 'var(--sa-dark)',
                     marginBottom: '0.5rem',
                     lineHeight: '1.4'
                   }}>
@@ -251,7 +252,7 @@ const SelectionArea: React.FC = () => {
                   {module.description && (
                     <p style={{
                       fontSize: '0.85rem',
-                      color: '#6c757d',
+                      color: 'var(--sa-muted)',
                       marginBottom: 0,
                       lineHeight: '1.5'
                     }}>
@@ -266,7 +267,7 @@ const SelectionArea: React.FC = () => {
           </Row>
         ) : (
           <div style={{
-            background: 'rgba(255, 255, 255, 0.95)',
+            background: 'var(--sa-card-bg)',
             borderRadius: '20px',
             padding: '4rem 2rem',
             textAlign: 'center',
@@ -275,7 +276,7 @@ const SelectionArea: React.FC = () => {
             <div style={{
               width: '120px',
               height: '120px',
-              background: 'linear-gradient(135deg, #f5f7fa 0%, #e3e7ed 100%)',
+              background: 'linear-gradient(135deg, var(--sa-surface-light) 0%, var(--sa-surface-warm) 100%)',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -286,14 +287,14 @@ const SelectionArea: React.FC = () => {
               📋
             </div>
             <h3 style={{ 
-              color: 'var(--page-primary-color)', 
+              color: 'var(--sa-dark)', 
               fontWeight: 'var(--font-weight-bold)',
               marginBottom: '1rem'
             }}>
               No Modules Available
             </h3>
             <p style={{ 
-              color: '#6c757d',
+              color: 'var(--sa-muted)',
               fontSize: '1.1rem',
               marginBottom: 0,
               maxWidth: '500px',

@@ -9,6 +9,7 @@ import himsConfig from '../../himsConfig'
 import { useSidebar } from '../../context/SidebarContext'
 import './header.css'
 import { routerPathNames } from '../../routes/routerPathNames'
+import { RootState } from '../../state/store'
 
 interface HeaderProps {
     setSideView: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,6 +23,9 @@ const Header = ({ setSideView, inactivitySecondsRemaining }: HeaderProps) => {
 
     const loginData = useSelector((state: any) => state.loginData)
 
+    const organizationName = useSelector(
+        (state: RootState) => state.appReducer.organization.name
+    )
     const navigate = useNavigate()
     const location = useLocation()
     const showInactivityCountdown = loginData?.authorized && inactivitySecondsRemaining > 0 && inactivitySecondsRemaining <= 120
@@ -111,25 +115,24 @@ const Header = ({ setSideView, inactivitySecondsRemaining }: HeaderProps) => {
                     <span>Home</span>
                 </Link>
                 </Col>
-                <Col style={{color: 'var(--sidebar-text)'}} className='px-lg-5 fs-17px fw-bold'>
-                    {himsConfig.hospitalFullName}
+                <Col className='px-lg-5 fs-17px fw-bold header-org-title'>
+                    {organizationName || himsConfig.hospitalFullName}
                 </Col>
                 <Col style={{color: 'var(--sidebar-text)'}} className="text-end">
                     <Row className='align-items-center'>
                         <Col>
                             <div className='header-actions'>
-                                <Link style={{color: 'var(--sidebar-text)'}} className='me-3' to="/hims/changepassword" title="Change Password">
+                                <Link className='me-3 header-action-link' to="/hims/changepassword" title="Change Password">
                                     <FontAwesomeIcon icon={faKey} />
                                 </Link>
                                 <button 
-                                    style={{color: 'var(--sidebar-text)', textDecoration: 'none'}}
-                                    className="btn btn-link p-0 me-3" 
+                                    className="btn btn-link p-0 me-3 header-action-btn" 
                                     onClick={toggleFullscreen}
                                     title={isFullscreen ? "Exit Fullscreen (F11)" : "Enter Fullscreen (F11)"}
                                 >
                                     <FontAwesomeIcon icon={isFullscreen ? faCompress : faExpand} />
                                 </button>
-                                <span className='align-middle px-2 curser-pointer text-uppercase fs-14px'>{loginData?.name}</span>
+                                <span className='align-middle px-2 curser-pointer text-uppercase fs-14px header-user-name'>{loginData?.name}</span>
                                 {showInactivityCountdown && (
                                     <span className={`logout-countdown${inactivitySecondsRemaining <= 30 ? ' logout-countdown--danger' : ''}`}>
                                         Auto logout in {formatCountdown(inactivitySecondsRemaining)}
