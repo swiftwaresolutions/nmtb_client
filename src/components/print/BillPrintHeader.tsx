@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import PrintHeader from "../PrintHeader";
-import { BORDER, formatDateTime } from "./printTokens";
+import {  formatDateTime } from "./printTokens";
 
 export interface BillPrintHeaderProps {
     /** Controls the bill-type badge label. Pass `customBillType` to override. */

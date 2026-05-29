@@ -3,7 +3,6 @@ import { errorHandling } from "../error/state/error-handle-action";
 
 const handleError = (dispatch: (payload: any) => void, error: any) => {
   console.error(error);
-  const errorObj = error
 
   if (error instanceof AxiosError) {
     if (error.response && error.response?.data?.error) {

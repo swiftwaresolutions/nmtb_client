@@ -1,7 +1,4 @@
 import { Fragment, useState, useEffect, useRef  } from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./style/main_style.css"
-import "./style/predefined.css"
 import AppRouter from './routes/AppRouter'
 import { useDispatch, useSelector } from "react-redux"
 

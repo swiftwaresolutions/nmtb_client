@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PrintHeader from "../PrintHeader";
 import { AppApiService } from "../../api/app/app-api-service";
-import { BORDER, formatDateTime } from "./printTokens";
+import {  formatDateTime } from "./printTokens";
 
 export interface PharmacyBillPrintHeaderProps {
     /** Controls the bill-type badge label. Pass `customBillType` to override. */

@@ -1,9 +1,9 @@
 {
-  "name": "hims",
+  "name": "nmtb",
   "main": "./.webpack/main",
-  "homepage": "/leo-hims",
+  "homepage": "/nmtb-hims",
   "version": "1.0.0",
-  "description": "HIMS Application",
+  "description": "NMTB Application",
   "author": "HIMS",
   "license": "MIT",
   "scripts": {

@@ -21,7 +21,6 @@ import {
   ChevronLeft,
   Clock,
   CheckCircle,
-  Key,
   ListCheck,
   ArrowRepeat,
   Calendar,
