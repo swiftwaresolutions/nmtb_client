@@ -397,6 +397,11 @@
   border: 1px solid #cbd5e0;
   transition: all 0.2s ease;
 }
+.form-control:focus{
+  /* border-color: #528ff0 !important; */
+   border: 1px solid #528ff0 !important;
+  box-shadow: none !important;
+}
 
 .form-control:disabled,
 .form-select:disabled {

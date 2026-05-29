@@ -10,8 +10,16 @@ import { RootState } from '../state/store'
 import { routerPathNames } from '../routes/routerPathNames'
 import himsConfig from '../himsConfig'
 import logoImage from '../components/logo-1.jpg'
+import { AppApiService } from '../api/app/app-api-service'
 
 const Login = () => {
+  const brandAccent = '#f75d00'
+  const brandAccentSoft = '#ff8a3d'
+  const brandDark = '#232323'
+  const brandWhite = '#ffffff'
+  const brandMuted = 'rgba(35, 35, 35, 0.72)'
+  const brandSurfaceLight = '#fff6ef'
+  const brandSurfaceWarm = '#ffe4d1'
 
   const loginUser = useSelector((s: RootState) => s.loginData);
   const dispatch = useDispatch()
@@ -21,6 +29,7 @@ const Login = () => {
   const storageService: StorageService = new StorageService()
   const [user, setUser] = useState({ userName: "", password: "" })
   const [errorMessage, setErrorMessage] = useState("")
+  const [organizationName, setOrganizationName] = useState(himsConfig.hospitalFullName)
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -56,6 +65,22 @@ const Login = () => {
     }
   }, [loginUser]);
 
+  useEffect(() => {
+    const getOrganizationDetails = async () => {
+      try {
+        const appApiService: AppApiService = new AppApiService()
+        const response = await appApiService.fetchOrganizationDetails()
+        if (response?.name) {
+          setOrganizationName(response.name)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getOrganizationDetails()
+  }, [])
+
   
   return (
     <Fragment>
@@ -67,7 +92,7 @@ const Login = () => {
         padding: '20px',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 50%, var(--page-secondary-color) 100%)'
+        background: `linear-gradient(135deg, ${brandSurfaceLight} 0%, ${brandSurfaceWarm} 60%, ${brandAccentSoft} 100%)`
       }}>
 
         {/* Login Container */}
@@ -87,14 +112,14 @@ const Login = () => {
                   {/* Left Side - Branding */}
                   <Col lg={6} className="d-none d-lg-block">
                     <div style={{
-                      background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
+                      background: `linear-gradient(135deg, ${brandAccent} 0%, ${brandAccentSoft} 100%)`,
                       height: '100%',
                       padding: '3rem',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      color: 'var(--page-secondary-color)',
+                      color: brandWhite,
                       position: 'relative'
                     }}>
                       {/* Logo/Icon */}
@@ -123,36 +148,27 @@ const Login = () => {
 
                       {/* Branding Text */}
                       <h2 style={{ 
-                        fontSize: '1.8rem',
+                        fontSize: '1.3rem',
                         fontWeight: '700',
                         textAlign: 'center',
                         marginBottom: '1rem',
                         lineHeight: '1.3',
-                        color: 'var(--page-secondary-color)'
+                        color: brandWhite
                       }}>
-                        NIGHTINGALE
+                        {organizationName}
                       </h2>
-                      <p style={{ 
-                        fontSize: '1.1rem',
-                        textAlign: 'center',
-                        opacity: 0.95,
-                        marginBottom: 0,
-                        color: 'var(--page-secondary-color)'
-                      }}>
-                        {himsConfig.hospitalFullName}
-                      </p>
                     </div>
                   </Col>
 
                   {/* Right Side - Login Form */}
                   <Col lg={6}>
-                    <div style={{ padding: '3rem 2.5rem', background: 'rgba(255, 255, 255, 0.98)', height: '100%' }}>
+                    <div style={{ padding: '3rem 2.5rem', background: '#fffdfb', height: '100%' }}>
                       {/* Mobile Header */}
                       <div className="d-lg-none text-center mb-4">
                         <div style={{
                           width: '80px',
                           height: '80px',
-                          background: 'var(--page-primary-color)',
+                          background: brandAccent,
                           borderRadius: '50%',
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -170,25 +186,25 @@ const Login = () => {
                             }}
                           />
                         </div>
-                        <h3 style={{ color: 'var(--page-primary-color)', fontWeight: '700', marginBottom: '0.5rem' }}>
+                        <h3 style={{ color: brandDark, fontWeight: '700', marginBottom: '0.5rem' }}>
                           HIMS
                         </h3>
-                        <p style={{ color: '#6c757d', fontSize: '0.9rem', marginBottom: 0 }}>
-                          {himsConfig.hospitalFullName}
+                        <p style={{ color: brandMuted, fontSize: '0.9rem', marginBottom: 0 }}>
+                          {organizationName}
                         </p>
                       </div>
 
                       {/* Login Header */}
                       <div className="text-center text-lg-start mb-4">
                         <h3 style={{ 
-                          color: 'var(--page-secondary-color)', 
+                          color: brandDark, 
                           fontWeight: '700',
                           fontSize: '2rem',
                           marginBottom: '0.5rem'
                         }}>
                           Welcome Back
                         </h3>
-                        <p style={{ color: '#6c757d', fontSize: '1rem' }}>
+                        <p style={{ color: brandMuted, fontSize: '1rem' }}>
                           Please login to continue
                         </p>
                       </div>
@@ -212,7 +228,7 @@ const Login = () => {
                       <Form onSubmit={handleLogin}>
                         {/* Username Field */}
                         <Form.Group className="mb-3">
-                          <Form.Label style={{ fontWeight: '600', color: '#495057', marginBottom: '0.5rem' }}>
+                          <Form.Label style={{ fontWeight: '600', color: brandDark, marginBottom: '0.5rem' }}>
                             Username
                           </Form.Label>
                           <div style={{ position: 'relative' }}>
@@ -221,7 +237,7 @@ const Login = () => {
                               left: '15px',
                               top: '50%',
                               transform: 'translateY(-50%)',
-                              color: '#6c757d',
+                              color: brandMuted,
                               fontSize: '1.1rem'
                             }}></i>
                             <Form.Control
@@ -240,7 +256,7 @@ const Login = () => {
                                 fontSize: '1rem',
                                 transition: 'all 0.3s'
                               }}
-                              onFocus={(e) => e.target.style.borderColor = 'var(--page-primary-color)'}
+                              onFocus={(e) => e.target.style.borderColor = brandAccent}
                               onBlur={(e) => e.target.style.borderColor = '#e9ecef'}
                             />
                           </div>
@@ -248,7 +264,7 @@ const Login = () => {
 
                         {/* Password Field */}
                         <Form.Group className="mb-4">
-                          <Form.Label style={{ fontWeight: '600', color: '#495057', marginBottom: '0.5rem' }}>
+                          <Form.Label style={{ fontWeight: '600', color: brandDark, marginBottom: '0.5rem' }}>
                             Password
                           </Form.Label>
                           <div style={{ position: 'relative' }}>
@@ -257,7 +273,7 @@ const Login = () => {
                               left: '15px',
                               top: '50%',
                               transform: 'translateY(-50%)',
-                              color: '#6c757d',
+                              color: brandMuted,
                               fontSize: '1.1rem'
                             }}></i>
                             <Form.Control
@@ -275,7 +291,7 @@ const Login = () => {
                                 fontSize: '1rem',
                                 transition: 'all 0.3s'
                               }}
-                              onFocus={(e) => e.target.style.borderColor = 'var(--page-primary-color)'}
+                              onFocus={(e) => e.target.style.borderColor = brandAccent}
                               onBlur={(e) => e.target.style.borderColor = '#e9ecef'}
                             />
                           </div>
@@ -287,12 +303,12 @@ const Login = () => {
                           style={{
                             width: '100%',
                             height: '50px',
-                            background: 'var(--page-primary-color)',
+                            background: `linear-gradient(135deg, ${brandAccent} 0%, ${brandAccentSoft} 100%)`,
                             border: 'none',
                             borderRadius: '10px',
                             fontSize: '1.1rem',
                             fontWeight: '600',
-                            color: 'var(--page-secondary-color)',
+                            color: brandWhite,
                             transition: 'all 0.3s',
                             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
                           }}
@@ -312,7 +328,7 @@ const Login = () => {
 
                       {/* Footer Note */}
                       <div className="text-center mt-4">
-                        <small style={{ color: '#6c757d' }}>
+                        <small style={{ color: brandMuted }}>
                           <i className="fas fa-shield-alt me-1"></i>
                           Secure login protected by encryption
                         </small>
@@ -338,7 +354,7 @@ const Login = () => {
         >
           <p
             style={{
-              color: 'var(--text-white)',
+              color: brandWhite,
               fontSize: 'var(--font-size-sm)',
               marginBottom: 0,
               fontWeight: 'var(--font-weight-medium)'
