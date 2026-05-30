@@ -6,6 +6,7 @@ export interface MenuItemConfig {
   id: string;
   label: string;
   icon: string;
+  iconColor?: string;
   route?: string;
   accessCode?: number;
   submenus?: MenuItemConfig[];

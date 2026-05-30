@@ -21,9 +21,33 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, collapsed, onNavig
 
   const hasSubmenus = item.submenus && item.submenus.length > 0;
   const isActive = item.route ? location.pathname === item.route : false;
+  const menuPath = parentId ? `${parentId}.${item.id}` : item.id;
 
   // For level 0 (top-level) menus, use shared state; for nested menus, use local state
   const expanded = level === 0 ? expandedMenuId === item.id : localExpanded;
+
+  const getFallbackIconColor = () => {
+    const palette = [
+      'var(--btn-primary)',
+      'var(--btn-success)',
+      'var(--color-info)',
+      'var(--color-warning)',
+      'var(--color-danger)',
+      'var(--primary-color)'
+    ];
+
+    const seed = `${menuPath}-${item.label}`;
+    let hash = 0;
+    for (let i = 0; i < seed.length; i += 1) {
+      hash = (hash << 5) - hash + seed.charCodeAt(i);
+      hash |= 0;
+    }
+
+    const index = Math.abs(hash) % palette.length;
+    return palette[index];
+  };
+
+  const resolvedIconColor = item.iconColor ?? getFallbackIconColor();
 
   const handleClick = () => {
     if (hasSubmenus) {
@@ -51,7 +75,10 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, collapsed, onNavig
         onClick={handleClick}
         style={{ paddingLeft: `${level === 0 ? 1 : level * 1.5 + 1}rem` }}
       >
-        <span className="menu-item-icon">
+        <span
+          className="menu-item-icon"
+          style={{ '--menu-icon-color': resolvedIconColor } as React.CSSProperties}
+        >
           <FontAwesomeIcon icon={getIconObject(item.icon)} />
         </span>
         <span className="menu-item-text">{item.label}</span>
@@ -73,7 +100,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, collapsed, onNavig
               onNavigate={onNavigate}
               expandedMenuId={expandedMenuId}
               setExpandedMenuId={setExpandedMenuId}
-              parentId={item.id}
+              parentId={menuPath}
             />
           ))}
         </ul>
