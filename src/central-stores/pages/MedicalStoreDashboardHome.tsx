@@ -135,30 +135,47 @@ const MedicalStoreDashboardHome: React.FC = () => {
     { title: 'Purchase Return', icon: 'fas fa-undo', action: () => navigate(routerPathNames.centralStores.medicalStore.purchase.selectSupplierDate) }
   ];
 
+  const quickLinkGradients = [
+    'linear-gradient(135deg, var(--btn-primary) 0%, var(--color-info) 100%)',
+    'linear-gradient(135deg, var(--btn-success) 0%, var(--color-warning) 100%)',
+    'linear-gradient(135deg, var(--color-danger) 0%, var(--btn-primary) 100%)',
+    'linear-gradient(135deg, var(--color-info) 0%, var(--sa-accent) 100%)'
+  ];
+
   return (
-    <div style={{ 
-      padding: '1.5rem',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-      height: '100vh',
-      overflow: 'auto'
+    <div className="content-body selection-area-login-theme" style={{
+      flex: 1,
+      overflow: 'auto',
+      width: '100%',
+      background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)',
+      minHeight: '100%'
     }}>
-      <Container fluid>
+      <Container fluid style={{ padding: '1.5rem' }}>
         {/* Page Header */}
         <div style={{
           marginBottom: '2rem'
         }}>
           <h2 style={{
-            color: 'var(--page-secondary-color)',
-            fontWeight: '700',
-            fontSize: '1.75rem',
+            color: '#ff5e00',
+            fontWeight: 'var(--font-weight-bold)',
+            fontSize: 'calc(var(--font-size-3xl) * 1.16)',
             marginBottom: '0.5rem'
           }}>
-            <i className="fas fa-hospital" style={{ marginRight: '0.75rem' }}></i>
+            <i
+              className="fas fa-hospital"
+              style={{
+                marginRight: '0.75rem',
+                background: 'linear-gradient(135deg, #0d6efd 0%, #20c997 50%, #ff5e00 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'inline-block'
+              }}
+            ></i>
             Medical Store Dashboard
           </h2>
           <p style={{
-            color: '#6c757d',
-            fontSize: '0.95rem',
+            color: '#000000',
+            fontSize: 'var(--font-size-base)',
             marginBottom: 0
           }}>
             Welcome back! Monitor your medical store operations and inventory.
@@ -177,7 +194,7 @@ const MedicalStoreDashboardHome: React.FC = () => {
             <h4 style={{
               color: 'var(--page-secondary-color)',
               fontWeight: 'var(--font-weight-bold)',
-              fontSize: '1.25rem',
+              fontSize: 'var(--font-size-2xl)',
               marginBottom: '1rem'
             }}>
               <i className="fas fa-link" style={{ marginRight: '0.5rem' }}></i>
@@ -193,22 +210,25 @@ const MedicalStoreDashboardHome: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   padding: '0.875rem 1rem',
-                  borderRadius: '8px',
-                  background: '#f8f9fa',
+                  borderRadius: 'calc(var(--border-radius-sm) * 2)',
+                  background: 'var(--sa-card-bg)',
                   textDecoration: 'none',
-                  color: '#2c3e50',
-                  transition: 'all 0.2s ease',
-                  border: '1px solid transparent',
+                  color: 'var(--text-primary)',
+                  transition: 'var(--transition-normal)',
+                  border: '1px solid var(--border-color)',
+                  boxShadow: 'var(--shadow-sm)',
                   cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--page-secondary-color)';
-                  e.currentTarget.style.borderColor = 'var(--page-primary-color)';
-                  e.currentTarget.style.transform = 'translateX(5px)';
+                  e.currentTarget.style.background = 'var(--header-bg)';
+                  e.currentTarget.style.borderColor = 'var(--sa-accent-soft)';
+                  e.currentTarget.style.boxShadow = 'var(--sa-accent-shadow-sm)';
+                  e.currentTarget.style.transform = 'translateX(4px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#f8f9fa';
-                  e.currentTarget.style.borderColor = 'transparent';
+                  e.currentTarget.style.background = 'var(--sa-card-bg)';
+                  e.currentTarget.style.borderColor = 'var(--border-color)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                   e.currentTarget.style.transform = 'translateX(0)';
                 }}
               >
@@ -216,14 +236,15 @@ const MedicalStoreDashboardHome: React.FC = () => {
                   width: '35px',
                   height: '35px',
                   borderRadius: '8px',
-                  background: 'linear-gradient(135deg, var(--page-primary-color) 0%, #764ba2 100%)',
+                  background: quickLinkGradients[index % quickLinkGradients.length],
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginRight: '0.875rem',
+                  boxShadow: 'var(--sa-accent-shadow-sm)',
                   flexShrink: 0
                 }}>
-                  <i className={link.icon} style={{ color: 'white', fontSize: '0.9rem' }}></i>
+                  <i className={link.icon} style={{ color: 'var(--bg-white)', fontSize: 'var(--font-size-md)' }}></i>
                 </div>
                 <span style={{ fontWeight: 'var(--font-weight-semibold)', fontSize: 'var(--font-size-sm)' }}>
                   {link.title}

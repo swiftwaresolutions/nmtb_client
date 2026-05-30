@@ -61,7 +61,7 @@ const PharmacyStoreDashboard: React.FC = () => {
     {
       title: 'Sales Return',
       icon: 'fas fa-undo',
-      color: '#fd7e14',
+      color: 'var(--color-warning)',
       description: 'Process pharmacy sales returns',
       action: () => navigate(routerPathNames.pharmacyStores.pharmacy.activities.salesReturn)
     }
@@ -126,12 +126,14 @@ const PharmacyStoreDashboard: React.FC = () => {
   ];
 
   return (
-    <div style={{ 
-      padding: '1.5rem',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+    <div className="content-body selection-area-login-theme" style={{
+      flex: 1,
+      overflow: 'auto',
+      width: '100%',
+      background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)',
       minHeight: '100%'
     }}>
-      <Container fluid>
+      <Container fluid style={{ padding: '1.5rem' }}>
         {/* Page Header */}
         <div style={{
           marginBottom: '2rem'
@@ -143,7 +145,7 @@ const PharmacyStoreDashboard: React.FC = () => {
             marginBottom: '0.5rem'
           }}>
             <i className="fas fa-tachometer-alt" style={{ marginRight: '0.75rem' }}></i>
-            Pharmacy Store Dashboard
+            Pharmacy Dashboard
           </h2>
           <p style={{
             color: '#6c757d',
@@ -173,52 +175,21 @@ const PharmacyStoreDashboard: React.FC = () => {
           {quickActions.map((action, index) => (
             <Col key={index} xs={12} sm={6} lg={3}>
               <Card
+                className="quick-action-standard-card"
                 onClick={action.action}
                 style={{
-                  border: 'none',
-                  borderRadius: '12px',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
-                  cursor: 'pointer',
-                  height: '100%',
-                  transition: 'all 0.3s ease',
+                  '--qa-accent': action.color,
                   animation: `slideUp 0.5s ease-out ${0.4 + index * 0.1}s both`
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.18)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
-                }}
+                } as React.CSSProperties}
               >
-                <Card.Body style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
-                  <div style={{
-                    width: '70px',
-                    height: '70px',
-                    borderRadius: '50%',
-                    background: action.color,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 1rem',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.15)'
-                  }}>
+                <Card.Body className="quick-action-standard-body">
+                  <div className="quick-action-standard-icon">
                     <i className={action.icon} style={{ fontSize: '1.75rem', color: 'white' }}></i>
                   </div>
-                  <h5 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: '#2c3e50',
-                    marginBottom: '0.5rem'
-                  }}>
+                  <h5 className="quick-action-standard-title">
                     {action.title}
                   </h5>
-                  <p style={{
-                    fontSize: '0.85rem',
-                    color: '#6c757d',
-                    marginBottom: 0
-                  }}>
+                  <p className="quick-action-standard-description">
                     {action.description}
                   </p>
                 </Card.Body>

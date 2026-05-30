@@ -75,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ subModuleName, subModuleId }) => {
       ></div>
 
       {/* Sidebar */}
-      <div className={`module-sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
+      <div className={`module-sidebar selection-area-login-theme ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
         {/* Header */}
         <div className="sidebar-header">
           <h2 className="sidebar-header-title">

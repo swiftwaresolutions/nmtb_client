@@ -29,8 +29,32 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   const hasSubmenus = item.submenus && item.submenus.length > 0;
   const isActive = item.url ? location.pathname === item.url : false;
+  const menuPath = parentId ? `${parentId}.${item.id}` : item.id;
   
   const isExpanded = level === 0 ? expandedMenuId === item.id : localExpanded;
+
+  const getFallbackIconColor = () => {
+    const palette = [
+      'var(--btn-primary)',
+      'var(--btn-success)',
+      'var(--color-info)',
+      'var(--color-warning)',
+      'var(--color-danger)',
+      'var(--primary-color)'
+    ];
+
+    const seed = `${menuPath}-${item.name}`;
+    let hash = 0;
+    for (let i = 0; i < seed.length; i += 1) {
+      hash = (hash << 5) - hash + seed.charCodeAt(i);
+      hash |= 0;
+    }
+
+    const index = Math.abs(hash) % palette.length;
+    return palette[index];
+  };
+
+  const resolvedIconColor = item.iconColor ?? getFallbackIconColor();
 
   const handleClick = () => {
     if (hasSubmenus) {
@@ -61,7 +85,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
       title={collapsed ? item.name : ''}
       style={{ paddingLeft: `${level === 0 ? 1 : level * 1.5 + 1}rem` }}
     >
-      <span className="menu-item-icon">
+      <span
+        className="menu-item-icon"
+        style={{ '--menu-icon-color': resolvedIconColor } as React.CSSProperties}
+      >
         {getIconElement()}
       </span>
       <span className="menu-item-text">{item.name}</span>
@@ -88,7 +115,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
               onNavigate={onNavigate}
               expandedMenuId={expandedMenuId}
               setExpandedMenuId={setExpandedMenuId}
-              parentId={item.id}
+              parentId={menuPath}
             />
           ))}
         </ul>

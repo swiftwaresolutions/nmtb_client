@@ -35,6 +35,13 @@ const PharmacyStoresLayout: React.FC = () => {
 
   const pharModule = moduleDetails?.find((mod) => mod.modId === moduleId);
 
+  const storeIconGradients = [
+    'linear-gradient(135deg, #0d6efd 0%, #20c997 100%)',
+    'linear-gradient(135deg, #6610f2 0%, #0dcaf0 100%)',
+    'linear-gradient(135deg, #198754 0%, #0dcaf0 100%)',
+    'linear-gradient(135deg, #6f42c1 0%, #20c997 100%)'
+  ];
+
   const subModIds = Array.isArray(pharModule?.subModIds ?? []) ? (pharModule?.subModIds ?? []).map((idObj: any) =>
     typeof idObj === 'object' && idObj.subModId !== undefined ? idObj.subModId
       : typeof idObj === 'number' ? idObj : undefined
@@ -107,12 +114,16 @@ const PharmacyStoresLayout: React.FC = () => {
 
   if (isBaseRoute && loading) {
     return (
-      <div style={{ 
+      <div className="content-body selection-area-login-theme" style={{
+        flex: 1,
+        overflow: 'auto',
+        width: '100%',
+        minHeight: '100%',
         padding: '4rem 2rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+        background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)'
       }}>
         <div style={{ textAlign: 'center' }}>
           <div className="loading-spinner" style={{ margin: '0 auto 1rem' }}></div>
@@ -127,20 +138,22 @@ const PharmacyStoresLayout: React.FC = () => {
   return (
     <SidebarProvider>
       {isBaseRoute ? (
-        <div style={{ 
-          background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        <div className="content-body selection-area-login-theme" style={{
+          flex: 1,
+          overflow: 'auto',
+          width: '100%',
+          background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)',
           padding: '2rem 1rem 3rem',
-          minHeight: '100%',
-          width: '100%'
+          minHeight: '100%'
         }}>
           <Container style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
             {/* Page Header Section */}
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.95)',
+            <div className="selection-area-login-theme" style={{
+              background: 'var(--sa-card-bg)',
               borderRadius: '12px',
               padding: '1rem 1.5rem',
               marginBottom: '1.5rem',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
+              boxShadow: 'var(--sa-card-shadow)',
               border: '1px solid rgba(255, 255, 255, 0.3)'
             }}>
               <Row className="align-items-center mx-0">
@@ -150,14 +163,14 @@ const PharmacyStoresLayout: React.FC = () => {
                     <div style={{
                       width: '50px',
                       height: '50px',
-                      background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
+                      background: 'linear-gradient(135deg, var(--btn-primary) 0%, var(--color-info) 50%, var(--btn-success) 100%)',
                       borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 3px 10px rgba(95, 74, 139, 0.25)'
+                      boxShadow: '0 3px 10px rgba(0, 80, 171, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.65) inset'
                     }}>
-                      <i className="fas fa-pills" style={{ fontSize: '1.25rem', color: 'var(--page-secondary-color)' }}></i>
+                      <i className="fas fa-pills" style={{ fontSize: '1.25rem', color: 'var(--bg-white)', textShadow: '0 1px 2px rgba(0, 0, 0, 0.18)' }}></i>
                     </div>
                     
                     {/* Title & Subtitle */}
@@ -165,7 +178,7 @@ const PharmacyStoresLayout: React.FC = () => {
                       <h1 style={{ 
                         fontSize: '1.35rem',
                         fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--page-primary-color)',
+                        color: '#ff5e00',
                         marginBottom: '0.15rem',
                         letterSpacing: '-0.3px'
                       }}>
@@ -173,7 +186,7 @@ const PharmacyStoresLayout: React.FC = () => {
                       </h1>
                       <p style={{ 
                         fontSize: '0.85rem',
-                        color: '#6c757d',
+                        color: '#111213',
                         marginBottom: 0
                       }}>
                         Select a pharmacy store to manage
@@ -197,16 +210,16 @@ const PharmacyStoresLayout: React.FC = () => {
                 <Col lg={3} className="text-lg-end mt-2 mt-lg-0">
                   <div style={{
                     display: 'inline-block',
-                    background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
-                    color: 'var(--page-secondary-color)',
+                    background: '#ff5e00',
+                    color: 'var(--bg-white)',
                     padding: '0.5rem 1rem',
                     borderRadius: '8px',
-                    boxShadow: '0 3px 10px rgba(95, 74, 139, 0.25)'
+                    boxShadow: '0 3px 10px rgba(255, 94, 0, 0.28)'
                   }}>
-                    <div style={{ fontSize: '0.7rem', opacity: 0.9, marginBottom: '0.1rem' }}>
+                    <div style={{ fontSize: 'var(--font-size-xs)', fontWeight: 'var(--font-weight-medium)', opacity: 0.9, marginBottom: '0.1rem', color: 'var(--bg-white)' }}>
                       Available Stores
                     </div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 'var(--font-weight-bold)' }}>
+                    <div style={{ fontSize: 'calc(var(--font-size-2xl) * 1.12)', fontWeight: 'var(--font-weight-bold)' }}>
                       {subModules.length}
                     </div>
                   </div>
@@ -257,27 +270,28 @@ const PharmacyStoresLayout: React.FC = () => {
                         left: 0,
                         right: 0,
                         height: '4px',
-                        background: 'linear-gradient(90deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)'
+                        background: 'linear-gradient(90deg, #ffb74d 0%, #ffb74d 100%)'
                       }}></div>
 
                       {/* Icon */}
                       <div style={{
                         width: '80px',
                         height: '80px',
-                        background: 'linear-gradient(135deg, var(--page-primary-color) 0%, var(--page-secondary-color) 100%)',
+                        background: storeIconGradients[index % storeIconGradients.length],
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '1.25rem',
-                        boxShadow: '0 5px 15px rgba(95, 74, 139, 0.3)',
+                        boxShadow: '0 8px 20px rgba(255, 183, 77, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.65) inset',
                         transition: 'all 0.3s ease'
                       }}>
                         <i 
                           className="fas fa-capsules"
                           style={{ 
                             fontSize: '2rem', 
-                            color: 'var(--page-secondary-color)'
+                            color: '#f0f0f0',
+                            textShadow: '0 1px 2px rgba(0, 0, 0, 0.18)'
                           }}
                         ></i>
                       </div>

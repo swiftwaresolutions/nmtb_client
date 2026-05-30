@@ -284,6 +284,54 @@
   background-color: teal;
 }
 
+/* Global Quick Action Card Standard */
+.quick-action-standard-card {
+  border: 1px solid var(--border-color) !important;
+  border-radius: calc(var(--border-radius-sm) * 3) !important;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  height: 100%;
+  overflow: hidden;
+  transition: var(--transition-normal);
+  border-top: 3px solid var(--qa-accent, var(--btn-primary)) !important;
+  background: var(--bg-white);
+}
+
+.quick-action-standard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.quick-action-standard-body {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.quick-action-standard-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--qa-accent, var(--btn-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.quick-action-standard-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.quick-action-standard-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
 .border-teal {
   border-color: teal;
 }

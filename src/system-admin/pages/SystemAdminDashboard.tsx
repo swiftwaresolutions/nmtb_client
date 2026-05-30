@@ -57,71 +57,132 @@ const SystemAdminDashboard: React.FC = () => {
   };
 
   const quickActions = [
-    { title: 'Create User', path: '/system-admin/records/create-user', icon: FaUsersIcon, color: '#667eea' },
-    { title: 'Add Consultant', path: '/system-admin/records/consultant/add', icon: FaUserMdIcon, color: '#f5576c' }
+    {
+      title: 'Create User',
+      path: '/system-admin/records/create-user',
+      icon: FaUsersIcon,
+      color: 'var(--btn-primary)',
+      iconBg: 'var(--primary-color-light)',
+      cardBg: 'var(--bg-white)',
+      description: 'Create and configure system users',
+      count: 'User Setup'
+    },
+    {
+      title: 'Add Consultant',
+      path: '/system-admin/records/consultant/add',
+      icon: FaUserMdIcon,
+      color: 'var(--btn-success)',
+      iconBg: 'var(--secondary-color)',
+      cardBg: 'var(--bg-white)',
+      description: 'Register consultant profiles',
+      count: 'Consultant'
+    }
   ];
 
-  const recentActivities = [
-    { user: 'Admin', action: 'Created new user: Dr. Smith', time: '10 mins ago', type: 'success' },
-    { user: 'Admin', action: 'Updated Department: Cardiology', time: '25 mins ago', type: 'info' },
-    { user: 'Admin', action: 'Added new ward: ICU-3', time: '1 hour ago', type: 'success' },
-    { user: 'System', action: 'Database backup completed', time: '2 hours ago', type: 'success' },
-    { user: 'Admin', action: 'Modified user permissions', time: '3 hours ago', type: 'warning' }
-  ];
-
-  const systemAlerts = [
-    { text: '5 user accounts pending activation', type: 'warning', priority: 'medium' },
-    { text: 'System backup scheduled for tonight', type: 'info', priority: 'low' },
-    { text: '2 inactive consultants for 30+ days', type: 'warning', priority: 'medium' }
-  ];
 
   return (
-    <Container fluid className="p-4">
-      {/* Header */}
-      <div className="content-header mb-4">
-        <h2 className="mb-1">System Administration Dashboard</h2>
-        <p className="text-muted mb-0">
-          <FaClockIcon className="me-2" />
-          {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-        </p>
-      </div>
+    <div className="system-admin-dashboard" style={{
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'hidden'
+    }}>
+      <div className="content-body selection-area-login-theme" style={{
+        flex: 1,
+        overflow: 'auto',
+        width: '100%',
+        background: 'linear-gradient(180deg, var(--sa-surface-light) 75%, var(--sa-surface-warm) 100%)',
+        minHeight: '100%'
+      }}>
+      <Container fluid className="p-4">
+        {/* Header */}
+        <div className="content-header mb-4">
+          <h2 className="mb-1" style={{ color: 'var(--page-secondary-color)' }}>System Administration Dashboard</h2>
+          <p className="mb-0" style={{ color: 'var(--text-muted)' }}>
+            <FaClockIcon className="me-2" />
+            {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+        </div>
 
       {/* Statistics Cards */}
       
 
       {/* Quick Actions */}
-      <Row className="mb-4">
+      <Row className="mb-4 p-1 pb-0">
         <Col xs={12}>
-          <Card className="border-0 shadow-sm">
+          <Card className="border-0" style={{ background: 'var(--bg-white)', boxShadow: 'var(--shadow-sm)' }}>
             <Card.Body className="p-4">
-              <h5 className="mb-3">
-                <FaTasksIcon className="me-2" />
+              <h5 className="mb-3" style={{ color: 'var(--page-secondary-color)', fontWeight: 'var(--font-weight-semibold)' }}>
+                <FaTasksIcon className="me-2" color="var(--btn-primary)" />
                 Quick Actions
               </h5>
               <Row className="g-3">
                 {quickActions.map((action, index) => (
-                  <Col xs={6} md={3} key={index}>
+                  <Col xs={12} sm={6} md={6} key={index}>
                     <Button 
                       variant="light" 
-                      className="w-100 py-3 border-0 shadow-sm"
+                      className="w-100 py-3 border-0"
                       style={{ 
-                        backgroundColor: '#fff',
-                        transition: 'all 0.2s',
-                        cursor: 'pointer'
+                        background: action.cardBg,
+                        borderRadius: 'calc(var(--border-radius-sm) * 4)',
+                        boxShadow: 'var(--shadow-sm)',
+                        borderTop: `3px solid ${action.color}`,
+                        transition: 'var(--transition-normal)',
+                        cursor: 'pointer',
+                        minHeight: '118px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'stretch'
                       }}
                       onMouseOver={(e) => {
                         e.currentTarget.style.transform = 'translateY(-2px)';
-                        e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+                        e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 1px 2px rgba(0,0,0,0.075)';
+                        e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                       }}
                       onClick={() => navigate(action.path)}
                     >
-                      <action.icon size={32} color={action.color} className="mb-2" />
-                      <div className="fw-semibold" style={{ color: '#212529', fontSize: '0.9rem' }}>
-                        {action.title}
+                      <div className="d-flex align-items-center justify-content-between mb-2">
+                        <div className="d-flex align-items-center">
+                          <div
+                            className="me-3"
+                            style={{
+                              width: '46px',
+                              height: '46px',
+                              borderRadius: 'calc(var(--border-radius-sm) * 2)',
+                              background: action.iconBg,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <action.icon size={24} color={action.color} />
+                          </div>
+                          <div className="text-start">
+                            <div style={{ color: 'var(--page-secondary-color)', fontWeight: 'var(--font-weight-semibold)' }}>
+                              {action.title}
+                            </div>
+                            <div style={{ color: 'var(--text-muted)', fontSize: 'var(--font-size-xs)' }}>
+                              {action.description}
+                            </div>
+                          </div>
+                        </div>
+                        <span
+                          className="px-2 py-1"
+                          style={{
+                            background: action.iconBg,
+                            color: action.color,
+                            borderRadius: 'calc(var(--border-radius-sm) * 2)',
+                            fontSize: 'var(--font-size-xs)',
+                            fontWeight: 'var(--font-weight-semibold)'
+                          }}
+                        >
+                          {action.count}
+                        </span>
                       </div>
                     </Button>
                   </Col>
@@ -136,7 +197,9 @@ const SystemAdminDashboard: React.FC = () => {
 
       {/* Recent Activities */}
       
-    </Container>
+      </Container>
+      </div>
+    </div>
   );
 };
 
